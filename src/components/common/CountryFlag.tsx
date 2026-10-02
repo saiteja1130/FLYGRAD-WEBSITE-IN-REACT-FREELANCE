@@ -6,11 +6,13 @@ interface CountryFlagProps {
 }
 
 export const CountryFlag: React.FC<CountryFlagProps> = ({ countryCode, className = 'w-7 h-5' }) => {
-  const code = countryCode.toLowerCase();
+  const code = countryCode.trim().toLowerCase();
 
   switch (code) {
     case 'usa':
     case 'us':
+    case 'united states':
+    case 'america':
       return (
         <svg className={`${className} rounded shadow-xs overflow-hidden shrink-0`} viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
           <path fill="#bd3d44" d="M0 0h640v480H0" />
@@ -45,6 +47,8 @@ export const CountryFlag: React.FC<CountryFlagProps> = ({ countryCode, className
 
     case 'uk':
     case 'gb':
+    case 'united kingdom':
+    case 'great britain':
       return (
         <svg className={`${className} rounded shadow-xs overflow-hidden shrink-0`} viewBox="0 0 640 480" xmlns="http://www.w3.org/2000/svg">
           <path fill="#012169" d="M0 0h640v480H0z" />

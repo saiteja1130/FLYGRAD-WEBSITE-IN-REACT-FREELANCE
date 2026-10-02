@@ -1,158 +1,267 @@
 import React from 'react';
-import { PageHero } from '../components/layout/PageHero.tsx';
-import { CTABand } from '../components/sections/CTABand.tsx';
-import { Languages, CheckCircle2, ArrowRight, ShieldCheck, GraduationCap, DollarSign, BookOpen } from 'lucide-react';
-import heroAirportImg from '../assets/images/hero_students_airport_1790920592244.jpg';
+import { Link } from 'react-router-dom';
+import {
+  ChevronRight,
+  Award,
+  Users,
+  BookOpen,
+  MessageSquare,
+  Check,
+  ArrowRight,
+  Bookmark,
+} from 'lucide-react';
+import germanHeroImg from '../assets/images/services/service_german_class.jpg';
 
 interface GermanLanguagePageProps {
   onOpenCounselling: (programName?: string) => void;
 }
 
 export const GermanLanguagePage: React.FC<GermanLanguagePageProps> = ({ onOpenCounselling }) => {
-  const levels = [
+  const featureBadges = [
     {
-      level: "A1 (Beginner)",
-      duration: "6–8 Weeks",
-      focus: "Basic daily greetings, alphabet, numbers, simple sentences, family, shopping, and everyday vocabulary.",
-      outcome: "Goethe-Zertifikat A1 clearance; sufficient for family reunion visa and initial arrival navigation."
+      title: 'Expert Trainers',
+      subtitle: 'Native & certified',
+      icon: Award,
     },
     {
-      level: "A2 (Elementary)",
-      duration: "6–8 Weeks",
-      focus: "Routine social situations, employment communication, past tense grammar, and writing short notes.",
-      outcome: "Goethe-Zertifikat A2 clearance; required by select English-taught master's programs in Germany."
+      title: 'Flexible Batches',
+      subtitle: 'Online & offline',
+      icon: Users,
     },
     {
-      level: "B1 (Intermediate)",
-      duration: "8–10 Weeks",
-      focus: "Complex discussions on academic interests, writing detailed personal letters, and understanding work discourse.",
-      outcome: "Essential for German permanent residency pathways and Studienkolleg foundation entrance."
+      title: 'Study Material',
+      subtitle: 'Updated & comprehensive',
+      icon: BookOpen,
     },
     {
-      level: "B2 (Vantage)",
-      duration: "8–10 Weeks",
-      focus: "Technical articles, abstract discussions in your field of study, spontaneous fluency, and argumentative essays.",
-      outcome: "Direct admission prerequisite for German-taught Bachelor's, Master's, and medical residency programs."
-    }
+      title: 'Practice Sessions',
+      subtitle: 'Real-life conversation',
+      icon: MessageSquare,
+    },
+  ];
+
+  const popularPrograms = [
+    {
+      level: 'A1 – A2',
+      subtitle: 'Beginner to Elementary',
+    },
+    {
+      level: 'B1 – B2',
+      subtitle: 'Intermediate',
+    },
+    {
+      level: 'C1 – C2',
+      subtitle: 'Advanced',
+    },
+    {
+      level: 'TestDaF',
+      subtitle: 'For university admission',
+    },
+  ];
+
+  const learningSteps = [
+    {
+      step: '01',
+      title: 'Level Assessment',
+      subtitle: 'Find your level',
+    },
+    {
+      step: '02',
+      title: 'Customized Plan',
+      subtitle: 'Tailored to goals',
+    },
+    {
+      step: '03',
+      title: 'Interactive Classes',
+      subtitle: 'Expert trainers',
+    },
+    {
+      step: '04',
+      title: 'Practice & Feedback',
+      subtitle: 'Regular evaluation',
+    },
+    {
+      step: '05',
+      title: 'Certification',
+      subtitle: 'Get recognized',
+    },
   ];
 
   return (
-    <div>
-      <PageHero
-        title="German Language Training (A1 – B2)"
-        subtitle="Learn German from certified educators and unlock 100% tuition-free education at Germany's world-renowned public universities."
-        badge="Language Excellence"
-        breadcrumbs={[{ label: 'German Language' }]}
-        bgImage={heroAirportImg}
-      />
-
-      {/* Free German Education Advantage */}
-      <section className="py-20 bg-white">
+    <div className="bg-white min-h-screen">
+      {/* ========================================================================= */}
+      {/* 1. HERO SECTION & BREADCRUMBS */}
+      {/* ========================================================================= */}
+      <section className="relative bg-gradient-to-b from-[#EBF5FF] via-[#F4F9FF] to-white pt-5 pb-12 lg:pb-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0A5CC4]">
-                The German Advantage
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B2F85] tracking-tight">
-                Study in Germany with Zero Tuition Fees
-              </h2>
-              <p className="text-slate-600 text-base leading-relaxed">
-                Public universities in 15 out of 16 German states charge zero tuition fees for both European and international students. You only pay a nominal semester contribution of €250–€350, which includes public transit.
-              </p>
-              <p className="text-slate-600 text-base leading-relaxed">
-                However, gaining admission requires careful preparation: clearing Goethe certification, obtaining your mandatory APS verification, and setting up an official Blocked Account. FLYGRAD manages this entire pipeline for you.
-              </p>
+          {/* Breadcrumbs */}
+          <nav className="flex items-center gap-1.5 text-xs text-slate-500 mb-6 sm:mb-8">
+            <Link to="/" className="text-[#0080FF] hover:underline">
+              Home
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <Link to="/services" className="text-[#0080FF] hover:underline">
+              Services
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <span className="font-semibold text-slate-700">German Language</span>
+          </nav>
 
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">Goethe-Institut & CEFR aligned communicative curriculum</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">Full assistance with APS certificate verification & document authentication</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">18-Month post-study job seeker visa in Europe's strongest economy</span>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Headline, Subtitle, Body & CTA */}
+            <div className="lg:col-span-6 space-y-4 sm:space-y-5">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B2347] tracking-tight">
+                German Language Programs
+              </h1>
+              <p className="text-lg sm:text-xl font-bold text-[#0080FF]">
+                Learn German. Build Your Future.
+              </p>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl">
+                Master the German language with expert training and get ready for higher education, better career opportunities and a brighter future in Germany.
+              </p>
 
               <div className="pt-2">
                 <button
                   onClick={() => onOpenCounselling('German Language')}
-                  className="gradient-brand-btn text-white text-sm font-semibold py-3.5 px-7 rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer"
+                  className="rounded-full px-7 py-3 bg-[#0080FF] hover:bg-[#0070E0] text-white font-bold text-xs sm:text-sm shadow-md shadow-sky-200/50 hover:shadow-lg transition-all flex items-center gap-2 group cursor-pointer"
                 >
-                  <span>Enrol in Next German Batch</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>Book Free Counselling</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
 
+            {/* Right Visual Photo: German classroom with teacher and Deutsch lernen whiteboard */}
             <div className="lg:col-span-6">
-              <div className="bg-[#F2F8FF] rounded-3xl p-8 border border-slate-200 space-y-4">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-200">
-                  <h3 className="text-lg font-bold text-[#0B2F85]">
-                    Step-by-Step Pathway to Germany
-                  </h3>
-                  <Languages className="w-6 h-6 text-[#1E90F0]" />
-                </div>
-
-                <div className="space-y-3 text-xs sm:text-sm text-slate-700">
-                  <div className="p-3.5 bg-white rounded-xl border border-slate-200 flex gap-3">
-                    <span className="font-bold text-[#0A5CC4]">1.</span>
-                    <span>Complete A1–B2 German courses with Flygrad certified trainers.</span>
-                  </div>
-                  <div className="p-3.5 bg-white rounded-xl border border-slate-200 flex gap-3">
-                    <span className="font-bold text-[#0A5CC4]">2.</span>
-                    <span>Clear APS certificate verification with our document audit team.</span>
-                  </div>
-                  <div className="p-3.5 bg-white rounded-xl border border-slate-200 flex gap-3">
-                    <span className="font-bold text-[#0A5CC4]">3.</span>
-                    <span>Apply via Uni-Assist / direct portals to TU9 and public universities.</span>
-                  </div>
-                  <div className="p-3.5 bg-white rounded-xl border border-slate-200 flex gap-3">
-                    <span className="font-bold text-[#0A5CC4]">4.</span>
-                    <span>Setup Expatrio / Coracle Blocked Account and file German National Visa.</span>
-                  </div>
-                </div>
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-sky-100 aspect-[4/3] bg-slate-100">
+                <img
+                  src={germanHeroImg}
+                  alt="German language classroom with teacher and students"
+                  className="w-full h-full object-cover object-center"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CEFR Level Breakdown */}
-      <section className="py-20 bg-slate-50 border-t border-slate-200">
+      {/* ========================================================================= */}
+      {/* 2. 4 FEATURE BADGES STRIP */}
+      {/* ========================================================================= */}
+      <section className="py-6 sm:py-8 bg-white border-y border-sky-100/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14 space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0A5CC4]">
-              Structured Modules
-            </span>
-            <h2 className="text-3xl font-extrabold text-[#0B2F85]">
-              CEFR German Language Levels We Offer
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {featureBadges.map((badge, idx) => {
+              const Icon = badge.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl p-4 sm:p-5 border border-sky-100/80 shadow-xs flex items-center gap-3.5"
+                >
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xs sm:text-sm font-bold text-[#0B2347]">{badge.title}</h3>
+                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">{badge.subtitle}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3. MIDDLE TWO-COLUMN GRID: WHY LEARN GERMAN vs POPULAR PROGRAMS */}
+      {/* ========================================================================= */}
+      <section className="py-12 sm:py-16 bg-white border-b border-sky-100/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+            {/* Left Column: Why Learn German? */}
+            <div className="lg:col-span-6 space-y-4">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2347] tracking-tight">
+                Why Learn German?
+              </h2>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                German is one of the most in-demand languages in the world. It opens doors to top universities, job opportunities and a high quality of life in Germany.
+              </p>
+
+              {/* 4 Bullet Points */}
+              <div className="space-y-2.5 pt-2">
+                {[
+                  'Access to top German universities',
+                  'Better career opportunities',
+                  'High demand in global job market',
+                  'Enhanced cultural experience',
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2.5">
+                    <div className="w-4 h-4 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0">
+                      <Check className="w-2.5 h-2.5 stroke-[3]" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-slate-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Popular Programs (4 Cards in 2x2 grid) */}
+            <div className="lg:col-span-6">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2347] tracking-tight mb-6">
+                Popular Programs
+              </h2>
+
+              <div className="grid grid-cols-2 gap-4">
+                {popularPrograms.map((p) => (
+                  <div
+                    key={p.level}
+                    onClick={() => onOpenCounselling(`German ${p.level}`)}
+                    className="bg-white rounded-2xl p-5 border border-sky-100/90 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-center gap-3.5 cursor-pointer group"
+                  >
+                    <div className="w-9 h-9 rounded-xl bg-sky-100/80 text-[#0080FF] flex items-center justify-center shrink-0 group-hover:bg-[#0080FF] group-hover:text-white transition-colors">
+                      <Bookmark className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h3 className="text-sm sm:text-base font-bold text-[#0B2347] group-hover:text-[#0080FF] transition-colors">
+                        {p.level}
+                      </h3>
+                      <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">{p.subtitle}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 4. 5-STEP LEARNING PROCESS */}
+      {/* ========================================================================= */}
+      <section className="py-12 sm:py-16 bg-white border-b border-sky-100/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2347]">
+              Our German Learning Process
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {levels.map((lvl, idx) => (
+          <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-2">
+            <div className="hidden md:block absolute top-5.5 left-12 right-12 h-0.5 bg-sky-200 -z-0" />
+
+            {learningSteps.map((s, idx) => (
               <div
                 key={idx}
-                className="bg-white p-7 rounded-2xl border border-slate-200 shadow-xs space-y-3"
+                className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center relative z-10 flex-1 px-1 gap-3.5 md:gap-0"
               >
-                <div className="flex items-center justify-between">
-                  <h3 className="text-xl font-bold text-slate-900">{lvl.level}</h3>
-                  <span className="text-xs font-bold text-[#0A5CC4] bg-[#F2F8FF] px-3 py-1 rounded-md">
-                    {lvl.duration}
-                  </span>
+                <div className="w-11 h-11 rounded-full bg-[#0080FF] text-white font-black text-sm flex items-center justify-center shadow-md shadow-sky-200 shrink-0 md:mb-3">
+                  {s.step}
                 </div>
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  {lvl.focus}
-                </p>
-                <div className="pt-3 border-t border-slate-100 text-xs font-medium text-slate-700 flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Target: {lvl.outcome}</span>
+                <div>
+                  <h4 className="text-xs sm:text-sm font-bold text-[#0B2347] leading-snug">
+                    {s.title}
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5">{s.subtitle}</p>
                 </div>
               </div>
             ))}
@@ -160,7 +269,31 @@ export const GermanLanguagePage: React.FC<GermanLanguagePageProps> = ({ onOpenCo
         </div>
       </section>
 
-      <CTABand onOpenCounselling={() => onOpenCounselling('German Language')} />
+      {/* ========================================================================= */}
+      {/* 5. BOTTOM CTA RIBBON */}
+      {/* ========================================================================= */}
+      <section className="py-8 sm:py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-[#0080FF] rounded-2xl px-6 sm:px-10 py-5 sm:py-6 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 text-white">
+            <div className="text-center sm:text-left">
+              <h3 className="text-base sm:text-lg lg:text-xl font-bold">
+                Start Your German Journey Today!
+              </h3>
+              <p className="text-xs sm:text-sm text-white/90 mt-0.5">
+                Expert guidance for your German language training.
+              </p>
+            </div>
+
+            <button
+              onClick={() => onOpenCounselling('German Language')}
+              className="rounded-full px-6 py-2.5 bg-white text-[#0080FF] font-bold text-xs sm:text-sm shadow hover:bg-sky-50 transition-colors flex items-center gap-2 shrink-0 cursor-pointer"
+            >
+              <span>Book Free Counselling</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

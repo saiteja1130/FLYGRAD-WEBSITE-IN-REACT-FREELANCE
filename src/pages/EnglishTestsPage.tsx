@@ -1,160 +1,299 @@
 import React from 'react';
-import { PageHero } from '../components/layout/PageHero.tsx';
-import { CTABand } from '../components/sections/CTABand.tsx';
-import { BookOpenCheck, CheckCircle2, Award, ArrowRight, Laptop, Headphones, Mic, FileText } from 'lucide-react';
-import counsellingImg from '../assets/images/counselling_session_1790920616185.jpg';
+import { Link } from 'react-router-dom';
+import {
+  ChevronRight,
+  Award,
+  BookOpenCheck,
+  FileText,
+  Clock,
+  Check,
+  ArrowRight,
+} from 'lucide-react';
+import englishHeroImg from '../assets/images/services/service_english_student.jpg';
 
 interface EnglishTestsPageProps {
   onOpenCounselling: (programName?: string) => void;
 }
 
 export const EnglishTestsPage: React.FC<EnglishTestsPageProps> = ({ onOpenCounselling }) => {
-  const testComparison = [
+  const featureBadges = [
     {
-      test: "IELTS Academic",
-      body: "IDP & British Council",
-      format: "Paper / Computer-Delivered",
-      duration: "2 Hrs 45 Mins",
-      scoring: "Band 0 – 9.0 (Target: 7.0+)",
-      acceptance: "Globally Universal (UK, US, Canada, Aus)",
-      bestFor: "Universities, Visa, Immigration"
+      title: 'Expert Trainers',
+      subtitle: 'Certified & experienced',
+      icon: Award,
     },
     {
-      test: "PTE Academic",
-      body: "Pearson VUE",
-      format: "100% Computer-Delivered with AI",
-      duration: "2 Hours",
-      scoring: "Score 10 – 90 (Target: 68+)",
-      acceptance: "Australia, UK, New Zealand, 1,000+ US Unis",
-      bestFor: "Fast results (48 hrs), automated scoring"
+      title: 'Personalized Study Plan',
+      subtitle: 'As per your target score',
+      icon: BookOpenCheck,
     },
     {
-      test: "TOEFL iBT",
-      body: "ETS Global",
-      format: "Internet-Based Test",
-      duration: "Under 2 Hours (New format)",
-      scoring: "Score 0 – 120 (Target: 95+)",
-      acceptance: "100% of US Universities, Worldwide",
-      bestFor: "US Research & Ivy League Universities"
+      title: 'Mock Tests',
+      subtitle: 'Real exam experience',
+      icon: FileText,
     },
     {
-      test: "Duolingo (DET)",
-      body: "Duolingo",
-      format: "Online At-Home Adaptive",
-      duration: "1 Hour",
-      scoring: "Score 10 – 160 (Target: 125+)",
-      acceptance: "4,500+ Institutions Worldwide",
-      bestFor: "Affordable fee ($59), rapid at-home testing"
-    }
+      title: 'Flexible Timings',
+      subtitle: 'Online & offline options',
+      icon: Clock,
+    },
+  ];
+
+  const popularTests = [
+    {
+      name: 'IELTS',
+      color: 'text-[#E11D48]',
+      subtitle: 'For study, work & migration',
+    },
+    {
+      name: 'TOEFL',
+      color: 'text-[#0052CC]',
+      subtitle: 'For USA & Canada',
+    },
+    {
+      name: 'PTE',
+      color: 'text-[#008080]',
+      subtitle: 'Computer-based test',
+    },
+    {
+      name: 'duolingo',
+      color: 'text-[#58CC02] lowercase font-extrabold',
+      subtitle: 'Flexible & convenient',
+    },
+  ];
+
+  const preparationSteps = [
+    {
+      step: '01',
+      title: 'Assessment',
+      subtitle: 'Know your current level',
+    },
+    {
+      step: '02',
+      title: 'Personalized Plan',
+      subtitle: 'Study plan & resources',
+    },
+    {
+      step: '03',
+      title: 'Mock Tests',
+      subtitle: 'Practice & improve',
+    },
+    {
+      step: '04',
+      title: 'Score Improvement',
+      subtitle: 'Achieve your target',
+    },
+    {
+      step: '05',
+      title: 'Ongoing Support',
+      subtitle: 'Till you succeed',
+    },
   ];
 
   return (
-    <div>
-      <PageHero
-        title="English Proficiency Test Coaching"
-        subtitle="Crack IELTS, PTE, TOEFL & Duolingo on your first attempt with British Council certified faculty and diagnostic mock simulations."
-        badge="Test Preparation"
-        breadcrumbs={[{ label: 'English Tests' }]}
-        bgImage={counsellingImg}
-      />
-
-      {/* 4 Pillars of Our Test Prep */}
-      <section className="py-20 bg-white">
+    <div className="bg-white min-h-screen">
+      {/* ========================================================================= */}
+      {/* 1. HERO SECTION & BREADCRUMBS */}
+      {/* ========================================================================= */}
+      <section className="relative bg-gradient-to-b from-[#EBF5FF] via-[#F4F9FF] to-white pt-5 pb-12 lg:pb-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16 space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0A5CC4]">
-              High-Band Strategy
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B2F85]">
-              Master All 4 Testing Modules
-            </h2>
-          </div>
+          {/* Breadcrumbs */}
+          <nav className="flex items-center gap-1.5 text-xs text-slate-500 mb-6 sm:mb-8">
+            <Link to="/" className="text-[#0080FF] hover:underline">
+              Home
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <Link to="/services" className="text-[#0080FF] hover:underline">
+              Services
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <span className="font-semibold text-slate-700">English Tests</span>
+          </nav>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3">
-              <Headphones className="w-8 h-8 text-[#1E90F0]" />
-              <h3 className="text-lg font-bold text-slate-900">Listening</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Accent familiarization (British, North American, Australian), speed tracking, and note-taking strategies.
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Headline, Subtitle, Body & CTA */}
+            <div className="lg:col-span-6 space-y-4 sm:space-y-5">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B2347] tracking-tight">
+                English Proficiency Tests
+              </h1>
+              <p className="text-lg sm:text-xl font-bold text-[#0080FF]">
+                Achieve Your Global Goals
               </p>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl">
+                Prepare for IELTS, TOEFL, PTE and Duolingo with expert training, practice materials and personalized guidance to get your desired score.
+              </p>
+
+              <div className="pt-2">
+                <button
+                  onClick={() => onOpenCounselling('English Tests')}
+                  className="rounded-full px-7 py-3 bg-[#0080FF] hover:bg-[#0070E0] text-white font-bold text-xs sm:text-sm shadow-md shadow-sky-200/50 hover:shadow-lg transition-all flex items-center gap-2 group cursor-pointer"
+                >
+                  <span>Book Free Counselling</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </button>
+              </div>
             </div>
 
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3">
-              <BookOpenCheck className="w-8 h-8 text-teal-600" />
-              <h3 className="text-lg font-bold text-slate-900">Reading</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Skimming, scanning, keyword locating, and eliminating distractors in complex academic passages.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3">
-              <FileText className="w-8 h-8 text-indigo-600" />
-              <h3 className="text-lg font-bold text-slate-900">Writing (Task 1 & 2)</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Cohesive paragraph frameworks, advanced vocabulary, diagram interpretations, and daily essay reviews.
-              </p>
-            </div>
-
-            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-3">
-              <Mic className="w-8 h-8 text-amber-600" />
-              <h3 className="text-lg font-bold text-slate-900">Speaking Mocks</h3>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Daily 1-on-1 viva interviews with certified evaluators to eliminate hesitation and build fluent speech.
-              </p>
+            {/* Right Visual Photo: Student with headphones studying */}
+            <div className="lg:col-span-6">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-sky-100 aspect-[4/3] bg-slate-100">
+                <img
+                  src={englishHeroImg}
+                  alt="Student preparing with headphones and laptop in library"
+                  className="w-full h-full object-cover object-center"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Comparison Matrix Table */}
-      <section className="py-20 bg-slate-50 border-t border-slate-200">
+      {/* ========================================================================= */}
+      {/* 2. 4 FEATURE BADGES STRIP */}
+      {/* ========================================================================= */}
+      <section className="py-6 sm:py-8 bg-white border-y border-sky-100/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14 space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0A5CC4]">
-              Side-by-Side Comparison
-            </span>
-            <h2 className="text-3xl font-extrabold text-[#0B2F85]">
-              Which English Exam is Right For You?
-            </h2>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {featureBadges.map((badge, idx) => {
+              const Icon = badge.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl p-4 sm:p-5 border border-sky-100/80 shadow-xs flex items-center gap-3.5"
+                >
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xs sm:text-sm font-bold text-[#0B2347]">{badge.title}</h3>
+                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">{badge.subtitle}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
+        </div>
+      </section>
 
-          <div className="overflow-x-auto bg-white rounded-2xl border border-slate-200 shadow-xs">
-            <table className="w-full text-left border-collapse">
-              <thead>
-                <tr className="bg-[#0B2F85] text-white text-xs uppercase tracking-wider">
-                  <th className="p-4 font-semibold">Test Name</th>
-                  <th className="p-4 font-semibold">Conducting Body</th>
-                  <th className="p-4 font-semibold">Duration</th>
-                  <th className="p-4 font-semibold">Scoring Target</th>
-                  <th className="p-4 font-semibold">Global Acceptance</th>
-                  <th className="p-4 font-semibold text-right">Action</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-200 text-xs sm:text-sm">
-                {testComparison.map((t, idx) => (
-                  <tr key={idx} className="hover:bg-slate-50 transition-colors">
-                    <td className="p-4 font-bold text-slate-900">{t.test}</td>
-                    <td className="p-4 text-slate-600">{t.body}</td>
-                    <td className="p-4 text-slate-600">{t.duration}</td>
-                    <td className="p-4 font-semibold text-[#0A5CC4]">{t.scoring}</td>
-                    <td className="p-4 text-slate-600">{t.acceptance}</td>
-                    <td className="p-4 text-right">
-                      <button
-                        onClick={() => onOpenCounselling(`${t.test} Prep`)}
-                        className="px-3 py-1.5 rounded-lg bg-blue-50 text-[#0A5CC4] font-semibold text-xs hover:bg-[#0A5CC4] hover:text-white transition-colors"
-                      >
-                        Join Batch
-                      </button>
-                    </td>
-                  </tr>
+      {/* ========================================================================= */}
+      {/* 3. MIDDLE TWO-COLUMN GRID: WHY TAKE ENGLISH TESTS vs POPULAR TESTS */}
+      {/* ========================================================================= */}
+      <section className="py-12 sm:py-16 bg-white border-b border-sky-100/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+            {/* Left Column: Why Take English Tests? */}
+            <div className="lg:col-span-6 space-y-4">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2347] tracking-tight">
+                Why Take English Tests?
+              </h2>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                English proficiency tests are essential for studying, working and settling abroad. We help you prepare with the best resources, training and strategies to achieve your target score.
+              </p>
+
+              {/* 4 Bullet Points */}
+              <div className="space-y-2.5 pt-2">
+                {[
+                  'Improve language skills',
+                  'Get university & visa approval',
+                  'Increase career opportunities',
+                  'Build confidence',
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2.5">
+                    <div className="w-4 h-4 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0">
+                      <Check className="w-2.5 h-2.5 stroke-[3]" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-slate-700">{item}</span>
+                  </div>
                 ))}
-              </tbody>
-            </table>
+              </div>
+            </div>
+
+            {/* Right Column: Popular Tests (4 Test Cards in 2x2 grid) */}
+            <div className="lg:col-span-6">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2347] tracking-tight mb-6">
+                Popular Tests
+              </h2>
+
+              <div className="grid grid-cols-2 gap-4">
+                {popularTests.map((t) => (
+                  <div
+                    key={t.name}
+                    onClick={() => onOpenCounselling(`${t.name} Preparation`)}
+                    className="bg-white rounded-2xl p-6 border border-sky-100/90 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col items-start gap-1 cursor-pointer"
+                  >
+                    <span className={`text-2xl sm:text-3xl font-black tracking-tight ${t.color}`}>
+                      {t.name}
+                    </span>
+                    <span className="text-xs text-slate-500 font-medium mt-1">
+                      {t.subtitle}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <CTABand onOpenCounselling={() => onOpenCounselling('English Tests')} />
+      {/* ========================================================================= */}
+      {/* 4. 5-STEP PREPARATION PROCESS */}
+      {/* ========================================================================= */}
+      <section className="py-12 sm:py-16 bg-white border-b border-sky-100/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2347]">
+              Our Test Preparation Process
+            </h2>
+          </div>
+
+          <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-2">
+            <div className="hidden md:block absolute top-5.5 left-12 right-12 h-0.5 bg-sky-200 -z-0" />
+
+            {preparationSteps.map((s, idx) => (
+              <div
+                key={idx}
+                className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center relative z-10 flex-1 px-1 gap-3.5 md:gap-0"
+              >
+                <div className="w-11 h-11 rounded-full bg-[#0080FF] text-white font-black text-sm flex items-center justify-center shadow-md shadow-sky-200 shrink-0 md:mb-3">
+                  {s.step}
+                </div>
+                <div>
+                  <h4 className="text-xs sm:text-sm font-bold text-[#0B2347] leading-snug">
+                    {s.title}
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5">{s.subtitle}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 5. BOTTOM CTA RIBBON */}
+      {/* ========================================================================= */}
+      <section className="py-8 sm:py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-[#0080FF] rounded-2xl px-6 sm:px-10 py-5 sm:py-6 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 text-white">
+            <div className="text-center sm:text-left">
+              <h3 className="text-base sm:text-lg lg:text-xl font-bold">
+                Get Your Desired Score with Expert Guidance
+              </h3>
+              <p className="text-xs sm:text-sm text-white/90 mt-0.5">
+                Expert guidance for your test preparation.
+              </p>
+            </div>
+
+            <button
+              onClick={() => onOpenCounselling('English Tests')}
+              className="rounded-full px-6 py-2.5 bg-white text-[#0080FF] font-bold text-xs sm:text-sm shadow hover:bg-sky-50 transition-colors flex items-center gap-2 shrink-0 cursor-pointer"
+            >
+              <span>Book Free Counselling</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

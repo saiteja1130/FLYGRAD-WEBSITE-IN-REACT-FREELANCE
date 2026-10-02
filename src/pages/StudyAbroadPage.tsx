@@ -1,134 +1,263 @@
 import React from 'react';
-import { PageHero } from '../components/layout/PageHero.tsx';
-import { CTABand } from '../components/sections/CTABand.tsx';
-import { countriesData } from '../data/countries.ts';
-import { GraduationCap, DollarSign, Briefcase, Calendar, CheckCircle2, ArrowRight } from 'lucide-react';
-import campusImg from '../assets/images/study_abroad_campus_1790920604338.jpg';
+import { Link } from 'react-router-dom';
+import {
+  ChevronRight,
+  Landmark,
+  Compass,
+  Award,
+  TrendingUp,
+  Check,
+  ArrowRight,
+} from 'lucide-react';
+import { CountryFlag } from '../components/common/CountryFlag.tsx';
+import graduateHeroImg from '../assets/images/services/service_ms_graduate.jpg';
+import studentsStudyImg from '../assets/images/services/service_ms_students.jpg';
 
 interface StudyAbroadPageProps {
   onOpenCounselling: (programName?: string) => void;
 }
 
 export const StudyAbroadPage: React.FC<StudyAbroadPageProps> = ({ onOpenCounselling }) => {
-  const msDestinations = countriesData.filter(c => !c.id.includes('georgia') && !c.id.includes('kazakhstan'));
+  const featureBadges = [
+    {
+      title: 'Top Universities',
+      subtitle: 'Global rankings',
+      icon: Landmark,
+    },
+    {
+      title: 'Expert Guidance',
+      subtitle: 'From application to visa',
+      icon: Compass,
+    },
+    {
+      title: 'Scholarship Support',
+      subtitle: 'Save on your education',
+      icon: Award,
+    },
+    {
+      title: 'Career Growth',
+      subtitle: 'Global opportunities',
+      icon: TrendingUp,
+    },
+  ];
+
+  const popularDestinations = [
+    { name: 'USA', code: 'usa' },
+    { name: 'UK', code: 'uk' },
+    { name: 'Canada', code: 'canada' },
+    { name: 'Australia', code: 'australia' },
+    { name: 'Germany', code: 'germany' },
+    { name: 'Ireland', code: 'ireland' },
+  ];
+
+  const applicationSteps = [
+    {
+      step: '01',
+      title: 'Initial Consultation',
+      subtitle: 'Understand your goals',
+    },
+    {
+      step: '02',
+      title: 'University Shortlist',
+      subtitle: 'As per your profile',
+    },
+    {
+      step: '03',
+      title: 'Application Submission',
+      subtitle: 'With expert support',
+    },
+    {
+      step: '04',
+      title: 'Visa Processing',
+      subtitle: 'Documentation & interview',
+    },
+    {
+      step: '05',
+      title: 'Pre-Departure Briefing',
+      subtitle: 'Get ready for your journey',
+    },
+  ];
 
   return (
-    <div>
-      <PageHero
-        title="MS & Postgraduate Study Abroad"
-        subtitle="Secure high-ranking admissions in top STEM and Management institutions across the USA, UK, Germany, Canada, and Ireland."
-        badge="Master of Science & MBA"
-        breadcrumbs={[{ label: 'Study Abroad (MS)' }]}
-        bgImage={campusImg}
-      />
-
-      {/* Overview & STEM OPT Value Proposition */}
-      <section className="py-20 bg-white">
+    <div className="bg-white min-h-screen">
+      {/* ========================================================================= */}
+      {/* 1. HERO SECTION & BREADCRUMBS */}
+      {/* ========================================================================= */}
+      <section className="relative bg-gradient-to-b from-[#EBF5FF] via-[#F4F9FF] to-white pt-5 pb-12 lg:pb-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0A5CC4]">
-                Global Degree Advantages
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B2F85] tracking-tight">
-                Unlock 3-Year Post-Study Work Rights and Silicon Valley Tech Careers
-              </h2>
-              <p className="text-slate-600 text-base leading-relaxed">
-                A global Master of Science degree is more than a diploma—it is your entry ticket to international industry leadership. At FLYGRAD, our specialized STEM consultants guide you through course selection, university shortlisting, and departmental research grants.
-              </p>
+          {/* Breadcrumbs */}
+          <nav className="flex items-center gap-1.5 text-xs text-slate-500 mb-6 sm:mb-8">
+            <Link to="/" className="text-[#0080FF] hover:underline">
+              Home
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <Link to="/services" className="text-[#0080FF] hover:underline">
+              Services
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <span className="font-semibold text-slate-700">MS Abroad</span>
+          </nav>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="text-xl font-bold text-[#0B2F85]">3-Year STEM OPT</div>
-                  <p className="text-xs text-slate-500 mt-1">Work full-time in the USA on F-1 student visa status before H-1B sponsorship.</p>
-                </div>
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200">
-                  <div className="text-xl font-bold text-[#0B2F85]">$18,500 Avg. Aid</div>
-                  <p className="text-xs text-slate-500 mt-1">Tuition discounts through Graduate Assistantships (TA/RA) and merit awards.</p>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Headline, Subtitle, Body & CTA */}
+            <div className="lg:col-span-6 space-y-4 sm:space-y-5">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B2347] tracking-tight">
+                MS Abroad
+              </h1>
+              <p className="text-lg sm:text-xl font-bold text-[#0080FF]">
+                Build Your Future with a Global Degree
+              </p>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl">
+                Pursue your Master's degree at top universities worldwide and gain the skills, exposure and opportunities to build a successful global career.
+              </p>
 
               <div className="pt-2">
                 <button
                   onClick={() => onOpenCounselling('MS Abroad')}
-                  className="gradient-brand-btn text-white text-sm font-semibold py-3.5 px-7 rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer"
+                  className="rounded-full px-7 py-3 bg-[#0080FF] hover:bg-[#0070E0] text-white font-bold text-xs sm:text-sm shadow-md shadow-sky-200/50 hover:shadow-lg transition-all flex items-center gap-2 group cursor-pointer"
                 >
-                  <span>Book Free MS Profile Evaluation</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>Book Free Counselling</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <div className="bg-[#F2F8FF] rounded-3xl p-8 border border-slate-200 space-y-5">
-                <h3 className="text-lg font-bold text-[#0B2F85]">
-                  Our 4-Tier Shortlisting Framework
-                </h3>
-                <div className="space-y-3">
-                  <div className="p-3 bg-white rounded-xl border border-slate-200">
-                    <span className="text-xs font-bold text-purple-700 uppercase">Ambitious (Dream)</span>
-                    <p className="text-xs text-slate-600 mt-0.5">Top 20–50 world ranked programs with selective acceptance rates.</p>
-                  </div>
-                  <div className="p-3 bg-white rounded-xl border border-slate-200">
-                    <span className="text-xs font-bold text-blue-700 uppercase">Target (Match)</span>
-                    <p className="text-xs text-slate-600 mt-0.5">High probability programs where your GPA and GRE strongly align.</p>
-                  </div>
-                  <div className="p-3 bg-white rounded-xl border border-slate-200">
-                    <span className="text-xs font-bold text-emerald-700 uppercase">Safe (High ROI)</span>
-                    <p className="text-xs text-slate-600 mt-0.5">Institutions offering guaranteed admits and immediate fee discounts.</p>
-                  </div>
-                </div>
-                <div className="text-xs text-slate-500 pt-2 border-t border-slate-200">
-                  ✓ Comprehensive evaluation including backlogs, internships, and capstone projects.
-                </div>
+            {/* Right Visual Photo: Graduate in cap and gown */}
+            <div className="lg:col-span-6">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-sky-100 aspect-[4/3] bg-slate-100">
+                <img
+                  src={graduateHeroImg}
+                  alt="Female graduate with graduation cap in front of collegiate building"
+                  className="w-full h-full object-cover object-center"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Top MS Countries Grid */}
-      <section className="py-20 bg-slate-50 border-t border-slate-200">
+      {/* ========================================================================= */}
+      {/* 2. 4 FEATURE BADGES STRIP */}
+      {/* ========================================================================= */}
+      <section className="py-6 sm:py-8 bg-white border-y border-sky-100/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14 space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0A5CC4]">
-              Top Study Destinations
-            </span>
-            <h2 className="text-3xl font-extrabold text-[#0B2F85]">
-              Compare Popular MS Hubs
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {featureBadges.map((badge, idx) => {
+              const Icon = badge.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl p-4 sm:p-5 border border-sky-100/80 shadow-xs flex items-center gap-3.5"
+                >
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xs sm:text-sm font-bold text-[#0B2347]">{badge.title}</h3>
+                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">{badge.subtitle}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3. MIDDLE TWO-COLUMN GRID: WHY STUDY MS vs POPULAR DESTINATIONS */}
+      {/* ========================================================================= */}
+      <section className="py-12 sm:py-16 bg-white border-b border-sky-100/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+            {/* Left Column: Why Study MS Abroad? */}
+            <div className="lg:col-span-6 space-y-4">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2347] tracking-tight">
+                Why Study MS Abroad?
+              </h2>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                A Master's degree from a reputed international university opens doors to better career opportunities, global exposure and a higher earning potential. We help you choose the right university, handle the admission process and guide you through every step.
+              </p>
+
+              {/* 4 Bullet Points */}
+              <div className="space-y-2.5 pt-1">
+                {[
+                  'World-class education & research facilities',
+                  'Global career opportunities',
+                  'Higher salary potential',
+                  'Post-study work options',
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2.5">
+                    <div className="w-4 h-4 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0">
+                      <Check className="w-2.5 h-2.5 stroke-[3]" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-slate-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Inset Photo: Two students studying together with laptop */}
+              <div className="pt-2">
+                <img
+                  src={studentsStudyImg}
+                  alt="Two students studying with laptop"
+                  className="rounded-2xl w-full h-auto object-cover border border-sky-100 shadow-sm"
+                />
+              </div>
+            </div>
+
+            {/* Right Column: Popular Destinations (6 Country Cards: 3 cols x 2 rows) */}
+            <div className="lg:col-span-6">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2347] tracking-tight mb-6">
+                Popular Destinations
+              </h2>
+
+              <div className="grid grid-cols-3 gap-3.5 sm:gap-4">
+                {popularDestinations.map((c) => (
+                  <div
+                    key={c.code}
+                    onClick={() => onOpenCounselling(`MS in ${c.name}`)}
+                    className="bg-white rounded-2xl p-4 sm:p-5 border border-sky-100/90 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-3 cursor-pointer group"
+                  >
+                    <CountryFlag countryCode={c.code} className="w-9 h-6 sm:w-10 sm:h-7" />
+                    <span className="text-xs sm:text-sm font-bold text-[#0B2347] group-hover:text-[#0080FF] transition-colors">
+                      {c.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 4. 5-STEP APPLICATION PROCESS */}
+      {/* ========================================================================= */}
+      <section className="py-12 sm:py-16 bg-white border-b border-sky-100/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2347]">
+              Our MS Application Process
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {msDestinations.map((country) => (
+          <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-2">
+            {/* Horizontal connecting line behind the badges on desktop */}
+            <div className="hidden md:block absolute top-5.5 left-12 right-12 h-0.5 bg-sky-200 -z-0" />
+
+            {applicationSteps.map((s, idx) => (
               <div
-                key={country.id}
-                className="bg-white rounded-2xl p-6 border border-slate-200 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                key={idx}
+                className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center relative z-10 flex-1 px-1 gap-3.5 md:gap-0"
               >
-                <div className="space-y-3">
-                  <div className="flex items-center justify-between">
-                    <span className="text-3xl">{country.flag}</span>
-                    <span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded">
-                      {country.visaProcessing}
-                    </span>
-                  </div>
-
-                  <h3 className="text-xl font-bold text-slate-900">{country.name}</h3>
-                  <p className="text-xs text-slate-600 leading-relaxed">{country.tagline}</p>
-
-                  <div className="pt-3 border-t border-slate-100 space-y-1.5 text-xs text-slate-600">
-                    <div><span className="font-semibold text-slate-800">Avg. Tuition:</span> {country.avgTuition}</div>
-                    <div><span className="font-semibold text-slate-800">Work Permit:</span> {country.workPermit}</div>
-                  </div>
+                <div className="w-11 h-11 rounded-full bg-[#0080FF] text-white font-black text-sm flex items-center justify-center shadow-md shadow-sky-200 shrink-0 md:mb-3">
+                  {s.step}
                 </div>
-
-                <div className="pt-5 mt-5 border-t border-slate-100">
-                  <button
-                    onClick={() => onOpenCounselling(`MS in ${country.name}`)}
-                    className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold bg-[#F2F8FF] text-[#0A5CC4] hover:bg-[#0A5CC4] hover:text-white transition-colors text-center"
-                  >
-                    Shortlist {country.name} Universities
-                  </button>
+                <div>
+                  <h4 className="text-xs sm:text-sm font-bold text-[#0B2347] leading-snug">
+                    {s.title}
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5">{s.subtitle}</p>
                 </div>
               </div>
             ))}
@@ -136,7 +265,31 @@ export const StudyAbroadPage: React.FC<StudyAbroadPageProps> = ({ onOpenCounsell
         </div>
       </section>
 
-      <CTABand onOpenCounselling={() => onOpenCounselling('MS Abroad')} />
+      {/* ========================================================================= */}
+      {/* 5. BOTTOM CTA RIBBON */}
+      {/* ========================================================================= */}
+      <section className="py-8 sm:py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-[#0080FF] rounded-2xl px-6 sm:px-10 py-5 sm:py-6 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 text-white">
+            <div className="text-center sm:text-left">
+              <h3 className="text-base sm:text-lg lg:text-xl font-bold">
+                Ready to Start Your MS Journey?
+              </h3>
+              <p className="text-xs sm:text-sm text-white/90 mt-0.5">
+                Get expert guidance, university shortlisting and end-to-end support.
+              </p>
+            </div>
+
+            <button
+              onClick={() => onOpenCounselling('MS Abroad')}
+              className="rounded-full px-6 py-2.5 bg-white text-[#0080FF] font-bold text-xs sm:text-sm shadow hover:bg-sky-50 transition-colors flex items-center gap-2 shrink-0 cursor-pointer"
+            >
+              <span>Book Free Counselling</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

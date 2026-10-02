@@ -1,200 +1,252 @@
 import React from 'react';
-import { PageHero } from '../components/layout/PageHero.tsx';
-import { CTABand } from '../components/sections/CTABand.tsx';
-import { Stethoscope, CheckCircle2, ShieldAlert, Award, ArrowRight, Bed, Utensils, Building2 } from 'lucide-react';
-import mbbsImg from '../assets/images/medical_students_mbbs_1790920629274.jpg';
+import { Link } from 'react-router-dom';
+import {
+  ChevronRight,
+  GraduationCap,
+  Users,
+  Plane,
+  Stethoscope,
+  Check,
+  ArrowRight,
+} from 'lucide-react';
+import { CountryFlag } from '../components/common/CountryFlag.tsx';
+import doctorsHeroImg from '../assets/images/services/service_mbbs_doctors.jpg';
 
 interface MbbsAbroadPageProps {
   onOpenCounselling: (programName?: string) => void;
 }
 
 export const MbbsAbroadPage: React.FC<MbbsAbroadPageProps> = ({ onOpenCounselling }) => {
-  const mbbsCountries = [
+  const featureBadges = [
     {
-      country: "Georgia",
-      flag: "🇬🇪",
-      tuition: "$4,500 – $7,500 / year",
-      duration: "6 Years (English Medium)",
-      universities: ["Tbilisi State Medical University", "Batumi Shota Rustaveli State", "New Vision University", "European University"],
-      highlights: "European standard simulation labs, safe environment, direct visa processing, Indian mess available."
+      title: 'Top Medical Universities',
+      subtitle: 'Globally recognized',
+      icon: GraduationCap,
     },
     {
-      country: "Kazakhstan",
-      flag: "🇰🇿",
-      tuition: "$3,600 – $5,000 / year",
-      duration: "5 Years + 1 Year Internship",
-      universities: ["Asfendiyarov Kazakh National", "Semey State Medical University", "South Kazakhstan Medical Academy"],
-      highlights: "Lowest tuition in Eurasia, 1,000+ bed affiliated hospitals, Indian food & dedicated hostels."
+      title: 'Experienced Counsellors',
+      subtitle: 'Personalized guidance',
+      icon: Users,
     },
     {
-      country: "Russia",
-      flag: "🇷🇺",
-      tuition: "$3,800 – $6,500 / year",
-      duration: "6 Years (English Medium)",
-      universities: ["Kazan Federal University", "First Moscow State Medical", "Crimea Federal University"],
-      highlights: "Historic medical academies, high student volume, clinical dissection cadavers, WHO recognized."
+      title: 'Visa & Travel Support',
+      subtitle: 'End-to-end assistance',
+      icon: Plane,
     },
     {
-      country: "Uzbekistan",
-      flag: "🇺🇿",
-      tuition: "$3,200 – $4,200 / year",
-      duration: "5 to 6 Years",
-      universities: ["Tashkent Medical Academy", "Samarkand State Medical University"],
-      highlights: "Culturally close, short flight duration from India, modern hospitals, highly affordable living costs."
-    }
+      title: 'Post-Study Career',
+      subtitle: 'Work & practice opportunities',
+      icon: Stethoscope,
+    },
+  ];
+
+  const popularDestinations = [
+    { name: 'Russia', code: 'russia' },
+    { name: 'Ukraine', code: 'ukraine' },
+    { name: 'Georgia', code: 'georgia' },
+    { name: 'China', code: 'china' },
+    { name: 'Philippines', code: 'philippines' },
+    { name: 'Kazakhstan', code: 'kazakhstan' },
+  ];
+
+  const applicationSteps = [
+    {
+      step: '01',
+      title: 'Counselling & Guidance',
+      subtitle: 'Choose the right country',
+    },
+    {
+      step: '02',
+      title: 'University Selection',
+      subtitle: 'As per your profile',
+    },
+    {
+      step: '03',
+      title: 'Application Submission',
+      subtitle: 'With document support',
+    },
+    {
+      step: '04',
+      title: 'Visa Processing',
+      subtitle: 'Interview & documentation',
+    },
+    {
+      step: '05',
+      title: 'Pre-Departure Briefing',
+      subtitle: 'Travel & accommodation',
+    },
   ];
 
   return (
-    <div>
-      <PageHero
-        title="MBBS in NMC & WHO Recognised Universities"
-        subtitle="Pursue high-quality English-medium medical degrees abroad at 1/5th the cost of Indian private colleges."
-        badge="Medical Studies"
-        breadcrumbs={[{ label: 'MBBS Abroad' }]}
-        bgImage={mbbsImg}
-      />
-
-      {/* NMC Compliance Checklist */}
-      <section className="py-20 bg-white">
+    <div className="bg-white min-h-screen">
+      {/* ========================================================================= */}
+      {/* 1. HERO SECTION & BREADCRUMBS */}
+      {/* ========================================================================= */}
+      <section className="relative bg-gradient-to-b from-[#EBF5FF] via-[#F4F9FF] to-white pt-5 pb-12 lg:pb-16 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-6 space-y-6">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0A5CC4]">
-                Strict Regulatory Adherence
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#0B2F85] tracking-tight">
-                100% Compliant with NMC FMGL Guidelines
-              </h2>
-              <p className="text-slate-600 text-base leading-relaxed">
-                National Medical Commission (NMC) regulations require foreign medical graduates to study in English, complete at least 54 months of curriculum plus 12 months of clinical internship at the same institution, and register with the local medical council.
-              </p>
-              <p className="text-slate-600 text-base leading-relaxed">
-                FLYGRAD exclusively partners with government and globally accredited medical academies meeting every mandate so your eligibility to sit for the NEXT / FMGE licensing exam in India is guaranteed.
-              </p>
+          {/* Breadcrumbs */}
+          <nav className="flex items-center gap-1.5 text-xs text-slate-500 mb-6 sm:mb-8">
+            <Link to="/" className="text-[#0080FF] hover:underline">
+              Home
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <Link to="/services" className="text-[#0080FF] hover:underline">
+              Services
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+            <span className="font-semibold text-slate-700">MBBS Abroad</span>
+          </nav>
 
-              <div className="space-y-3 pt-2">
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">100% English medium instruction throughout entire tenure</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">Full clinical rotation in multi-specialty teaching hospitals</span>
-                </div>
-                <div className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-sm text-slate-700 font-medium">Direct admissions without donation or capitation fees</span>
-                </div>
-              </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            {/* Left Headline, Subtitle, Body & CTA */}
+            <div className="lg:col-span-6 space-y-4 sm:space-y-5">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0B2347] tracking-tight">
+                MBBS Abroad
+              </h1>
+              <p className="text-lg sm:text-xl font-bold text-[#0080FF]">
+                Become a Doctor. Make a Global Impact.
+              </p>
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl">
+                Study MBBS at top medical universities around the world with expert guidance, hassle-free admission and complete support from application to graduation.
+              </p>
 
               <div className="pt-2">
                 <button
                   onClick={() => onOpenCounselling('MBBS Abroad')}
-                  className="gradient-brand-btn text-white text-sm font-semibold py-3.5 px-7 rounded-xl shadow-md transition-all flex items-center gap-2 cursor-pointer"
+                  className="rounded-full px-7 py-3 bg-[#0080FF] hover:bg-[#0070E0] text-white font-bold text-xs sm:text-sm shadow-md shadow-sky-200/50 hover:shadow-lg transition-all flex items-center gap-2 group cursor-pointer"
                 >
-                  <span>Check Your NEET Eligibility</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span>Book Free Counselling</span>
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </div>
 
+            {/* Right Visual Photo: Medical students in white coats */}
             <div className="lg:col-span-6">
-              <div className="bg-[#F2F8FF] rounded-3xl p-8 border border-slate-200 space-y-6">
-                <h3 className="text-lg font-bold text-[#0B2F85] flex items-center gap-2">
-                  <Award className="w-5 h-5 text-[#1E90F0]" />
-                  <span>Why Choose MBBS Overseas with Flygrad?</span>
-                </h3>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="bg-white p-4 rounded-xl border border-slate-200">
-                    <Utensils className="w-5 h-5 text-amber-600 mb-2" />
-                    <div className="text-sm font-bold text-slate-900">Indian Food & Cooks</div>
-                    <p className="text-xs text-slate-500 mt-1">Hostels equipped with dedicated Indian mess serving veg and non-veg food daily.</p>
-                  </div>
-
-                  <div className="bg-white p-4 rounded-xl border border-slate-200">
-                    <Bed className="w-5 h-5 text-blue-600 mb-2" />
-                    <div className="text-sm font-bold text-slate-900">Safe Campus Hostels</div>
-                    <p className="text-xs text-slate-500 mt-1">24/7 CCTV surveillance, Wi-Fi, central heating, and on-ground Indian coordinators.</p>
-                  </div>
-
-                  <div className="bg-white p-4 rounded-xl border border-slate-200">
-                    <Building2 className="w-5 h-5 text-teal-600 mb-2" />
-                    <div className="text-sm font-bold text-slate-900">Bedside Clinical Training</div>
-                    <p className="text-xs text-slate-500 mt-1">Early patient interaction in state-run trauma and maternity wards from 3rd year.</p>
-                  </div>
-
-                  <div className="bg-white p-4 rounded-xl border border-slate-200">
-                    <Stethoscope className="w-5 h-5 text-indigo-600 mb-2" />
-                    <div className="text-sm font-bold text-slate-900">NEXT / USMLE Prep</div>
-                    <p className="text-xs text-slate-500 mt-1">Integrated online medical coaching classes for Indian licensing during the course.</p>
-                  </div>
-                </div>
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border border-sky-100 aspect-[4/3] bg-slate-100">
+                <img
+                  src={doctorsHeroImg}
+                  alt="Medical students in white coats with stethoscopes"
+                  className="w-full h-full object-cover object-center"
+                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Country Breakdown Cards */}
-      <section className="py-20 bg-slate-50 border-t border-slate-200">
+      {/* ========================================================================= */}
+      {/* 2. 4 FEATURE BADGES STRIP */}
+      {/* ========================================================================= */}
+      <section className="py-6 sm:py-8 bg-white border-y border-sky-100/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-14 space-y-2">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0A5CC4]">
-              Top Medical Hubs
-            </span>
-            <h2 className="text-3xl font-extrabold text-[#0B2F85]">
-              Compare Popular MBBS Destinations
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+            {featureBadges.map((badge, idx) => {
+              const Icon = badge.icon;
+              return (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl p-4 sm:p-5 border border-sky-100/80 shadow-xs flex items-center gap-3.5"
+                >
+                  <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0 shadow-xs">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xs sm:text-sm font-bold text-[#0B2347]">{badge.title}</h3>
+                    <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">{badge.subtitle}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 3. MIDDLE TWO-COLUMN GRID: WHY STUDY MBBS vs POPULAR DESTINATIONS */}
+      {/* ========================================================================= */}
+      <section className="py-12 sm:py-16 bg-white border-b border-sky-100/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+            {/* Left Column: Why Study MBBS Abroad? */}
+            <div className="lg:col-span-6 space-y-4">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2347] tracking-tight">
+                Why Study MBBS Abroad?
+              </h2>
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                Studying MBBS abroad is a great option for students who want quality education, affordable fees and global exposure. We help you choose the right country and university, handle the admission process and provide complete support.
+              </p>
+
+              {/* 4 Bullet Points */}
+              <div className="space-y-2.5 pt-2">
+                {[
+                  'Globally recognized degrees',
+                  'Affordable tuition fees',
+                  'Modern infrastructure & clinical exposure',
+                  'International career opportunities',
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2.5">
+                    <div className="w-4 h-4 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0">
+                      <Check className="w-2.5 h-2.5 stroke-[3]" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-slate-700">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Popular Destinations (6 Country Cards: 3 cols x 2 rows) */}
+            <div className="lg:col-span-6">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2347] tracking-tight mb-6">
+                Popular Destinations
+              </h2>
+
+              <div className="grid grid-cols-3 gap-3.5 sm:gap-4">
+                {popularDestinations.map((c) => (
+                  <div
+                    key={c.code}
+                    onClick={() => onOpenCounselling(`MBBS in ${c.name}`)}
+                    className="bg-white rounded-2xl p-4 sm:p-5 border border-sky-100/90 shadow-2xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col items-center justify-center text-center gap-3 cursor-pointer group"
+                  >
+                    <CountryFlag countryCode={c.code} className="w-9 h-6 sm:w-10 sm:h-7" />
+                    <span className="text-xs sm:text-sm font-bold text-[#0B2347] group-hover:text-[#0080FF] transition-colors">
+                      {c.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================================= */}
+      {/* 4. 5-STEP APPLICATION PROCESS */}
+      {/* ========================================================================= */}
+      <section className="py-12 sm:py-16 bg-white border-b border-sky-100/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2347]">
+              Our MBBS Application Process
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {mbbsCountries.map((c, idx) => (
+          <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-2">
+            <div className="hidden md:block absolute top-5.5 left-12 right-12 h-0.5 bg-sky-200 -z-0" />
+
+            {applicationSteps.map((s, idx) => (
               <div
                 key={idx}
-                className="bg-white rounded-2xl p-7 border border-slate-200 shadow-xs space-y-5"
+                className="flex flex-row md:flex-col items-center md:items-center text-left md:text-center relative z-10 flex-1 px-1 gap-3.5 md:gap-0"
               >
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <span className="text-3xl">{c.flag}</span>
-                    <h3 className="text-xl font-bold text-slate-900">{c.country}</h3>
-                  </div>
-                  <span className="text-xs font-bold text-[#0A5CC4] bg-[#F2F8FF] px-3 py-1 rounded-md">
-                    {c.duration}
-                  </span>
+                <div className="w-11 h-11 rounded-full bg-[#0080FF] text-white font-black text-sm flex items-center justify-center shadow-md shadow-sky-200 shrink-0 md:mb-3">
+                  {s.step}
                 </div>
-
-                <div className="text-sm text-slate-600">
-                  <span className="font-semibold text-slate-800">Tuition Range:</span> {c.tuition}
-                </div>
-
-                <p className="text-xs text-slate-500 leading-relaxed">
-                  {c.highlights}
-                </p>
-
                 <div>
-                  <div className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-2">
-                    Top Recognized Medical Colleges:
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {c.universities.map((uni, uIdx) => (
-                      <span
-                        key={uIdx}
-                        className="text-xs px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 font-medium"
-                      >
-                        {uni}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="pt-3 border-t border-slate-100">
-                  <button
-                    onClick={() => onOpenCounselling(`MBBS in ${c.country}`)}
-                    className="w-full py-2.5 px-4 rounded-xl text-xs font-semibold bg-[#0B2F85] text-white hover:bg-[#0A1F5C] transition-colors"
-                  >
-                    Apply for {c.country} MBBS Seat
-                  </button>
+                  <h4 className="text-xs sm:text-sm font-bold text-[#0B2347] leading-snug">
+                    {s.title}
+                  </h4>
+                  <p className="text-[11px] text-slate-500 mt-0.5">{s.subtitle}</p>
                 </div>
               </div>
             ))}
@@ -202,7 +254,31 @@ export const MbbsAbroadPage: React.FC<MbbsAbroadPageProps> = ({ onOpenCounsellin
         </div>
       </section>
 
-      <CTABand onOpenCounselling={() => onOpenCounselling('MBBS Abroad')} />
+      {/* ========================================================================= */}
+      {/* 5. BOTTOM CTA RIBBON */}
+      {/* ========================================================================= */}
+      <section className="py-8 sm:py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-[#0080FF] rounded-2xl px-6 sm:px-10 py-5 sm:py-6 shadow-md flex flex-col sm:flex-row items-center justify-between gap-4 text-white">
+            <div className="text-center sm:text-left">
+              <h3 className="text-base sm:text-lg lg:text-xl font-bold">
+                Start Your MBBS Journey Today!
+              </h3>
+              <p className="text-xs sm:text-sm text-white/90 mt-0.5">
+                Expert guidance for your medical career abroad.
+              </p>
+            </div>
+
+            <button
+              onClick={() => onOpenCounselling('MBBS Abroad')}
+              className="rounded-full px-6 py-2.5 bg-white text-[#0080FF] font-bold text-xs sm:text-sm shadow hover:bg-sky-50 transition-colors flex items-center gap-2 shrink-0 cursor-pointer"
+            >
+              <span>Book Free Counselling</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
