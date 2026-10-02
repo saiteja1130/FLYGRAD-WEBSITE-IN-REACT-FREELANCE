@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --sky: #33C9FF;
+    --blue: #1E90F0;
+    --royal: #0A5CC4;
+    --navy: #0B2F85;
+    --ink: #0A1F5C;
+    --bg: #FFFFFF;
+    --bg-soft: #F2F8FF;
+    --text: #0F172A;
+    --muted: #5B6B8C;
+    --brand-gradient: linear-gradient(180deg, #33C9FF 0%, #0A5CC4 60%, #0A1F5C 100%);
+    --brand-gradient-h: linear-gradient(135deg, #33C9FF 0%, #1E90F0 45%, #0B2F85 100%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /* Lenis smooth scrolling integration */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+}
+
+@theme {
+  --color-sky: #33C9FF;
+  --color-blue: #1E90F0;
+  --color-royal: #0A5CC4;
+  --color-navy: #0B2F85;
+  --color-ink: #0A1F5C;
+  --color-bg-soft: #F2F8FF;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Custom gradients & glassmorphism */
+.gradient-brand-text {
+  background: linear-gradient(135deg, #33C9FF 0%, #1E90F0 40%, #0B2F85 95%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-brand-btn {
+  background: linear-gradient(135deg, #33C9FF 0%, #1E90F0 50%, #0A5CC4 100%);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.gradient-brand-btn:hover {
+  background: linear-gradient(135deg, #1E90F0 0%, #0A5CC4 60%, #0A1F5C 100%);
+  box-shadow: 0 10px 25px -5px rgba(14, 92, 196, 0.35);
+  transform: translateY(-1px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: 0 20px 40px -15px rgba(10, 31, 92, 0.08);
+}
+
+.dark-glass-card {
+  background: rgba(10, 31, 92, 0.8);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Flight path stroke animation */
+@keyframes flightDash {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+.animate-flight-path {
+  stroke-dasharray: 8 8;
+  animation: flightDash 25s linear infinite;
+}
+
+/* Infinite Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 35s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeFast {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee-fast {
+  display: flex;
+  width: max-content;
+  animation: marqueeFast 22s linear infinite;
+}
+.animate-marquee-fast:hover {
+  animation-play-state: paused;
+}

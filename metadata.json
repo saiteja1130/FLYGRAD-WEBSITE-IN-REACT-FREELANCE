@@ -1,0 +1,6 @@
+{
+  "name": "FLYGRAD - International Education Consultancy",
+  "description": "Your journey to global education starts here. Expert guidance for MS, MBBS, English proficiency tests, and German language programs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
