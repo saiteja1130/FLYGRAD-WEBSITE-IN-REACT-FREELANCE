@@ -67,9 +67,9 @@ export const ProgramTabs: React.FC<ProgramTabsProps> = ({ onOpenCounselling }) =
   const activeTab = programsData.find((p) => p.id === activeTabId) || programsData[0];
 
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white relative">
+    <section className="py-16  bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="mb-8">
           <span className="text-[11px] font-bold uppercase tracking-wider text-[#0080FF] block mb-1">
@@ -88,11 +88,10 @@ export const ProgramTabs: React.FC<ProgramTabsProps> = ({ onOpenCounselling }) =
               <button
                 key={tab.id}
                 onClick={() => setActiveTabId(tab.id)}
-                className={`flex-1 sm:flex-initial text-center px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 whitespace-nowrap cursor-pointer ${
-                  isSelected
+                className={`flex-1 sm:flex-initial text-center px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 whitespace-nowrap cursor-pointer ${isSelected
                     ? 'bg-[#0052cc] text-white shadow-md'
                     : 'bg-[#F1F5F9] text-slate-700 hover:bg-slate-200 hover:text-slate-900'
-                }`}
+                  }`}
               >
                 {tab.name}
               </button>
@@ -103,7 +102,7 @@ export const ProgramTabs: React.FC<ProgramTabsProps> = ({ onOpenCounselling }) =
         {/* Tab Content Box */}
         <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-            
+
             {/* Column 1: Campus Photo */}
             <div className="lg:col-span-5">
               <div className="rounded-2xl overflow-hidden shadow-md aspect-[16/10] bg-slate-100">

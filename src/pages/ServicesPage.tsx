@@ -72,7 +72,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenCounselling })
                   alt="Student at airport with airplane taking off"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                
+
                 {/* Stylized Badge: "Your Global Future Awaits" */}
                 <div className="absolute top-5 right-5 sm:top-6 sm:right-6 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-lg border border-sky-100 flex items-center gap-2 transform rotate-2 hover:rotate-0 transition-transform">
                   <span className="font-serif italic font-extrabold text-sm sm:text-base text-[#0080FF] tracking-tight">
@@ -168,7 +168,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenCounselling })
       {/* ========================================================================= */}
       {/* 3. CORE SERVICES 2x3 GRID (6 CARDS) */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section className="py-16  bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Card 1: MS Abroad */}
@@ -475,7 +475,7 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenCounselling })
       {/* ========================================================================= */}
       {/* 6. HOW IT WORKS (YOUR JOURNEY, SIMPLIFIED) */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section className="py-16  bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-2">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0080FF]">

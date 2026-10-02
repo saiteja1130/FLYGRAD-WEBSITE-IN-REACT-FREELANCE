@@ -77,7 +77,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenCounselling }) => {
       {/* ========================================================================= */}
       {/* 2. OUR STORY SECTION */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section className="py-16  bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
             {/* Left Consultation Image */}
@@ -243,7 +243,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenCounselling }) => {
       {/* ========================================================================= */}
       {/* 4. WHY CHOOSE US / MORE THAN JUST EDUCATIONAL CONSULTANTS */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-white">
+      <section className="py-16  bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Content */}
@@ -361,7 +361,7 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onOpenCounselling }) => {
       {/* ========================================================================= */}
       {/* 5. OUR VALUES / WHAT DRIVES US */}
       {/* ========================================================================= */}
-      <section className="py-16 sm:py-20 lg:py-24 bg-[#F4F9FD]/60 border-t border-sky-100/70">
+      <section className="py-16  bg-[#F4F9FD]/60 border-t border-sky-100/70">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             {/* Left Header */}

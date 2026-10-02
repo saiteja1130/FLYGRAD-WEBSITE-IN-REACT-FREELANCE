@@ -23,7 +23,7 @@ export const PageHero: React.FC<PageHeroProps> = ({
   bgImage
 }) => {
   return (
-    <section className="relative overflow-hidden bg-[#0A1F5C] text-white py-16 sm:py-20 lg:py-24 border-b border-slate-800">
+    <section className="relative overflow-hidden bg-[#0A1F5C] text-white py-16  border-b border-slate-800">
       {/* Background with measured contrast scrim */}
       {bgImage ? (
         <div
