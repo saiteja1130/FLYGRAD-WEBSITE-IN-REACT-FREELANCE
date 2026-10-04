@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const PARTNERS = [
@@ -135,14 +136,20 @@ export const GlobalEducationProviders: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
-        <div className="mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="mb-8"
+        >
           <span className="text-[11px] font-bold uppercase tracking-wider text-[#0080FF] block mb-1">
             GLOBAL PARTNERS
           </span>
           <h2 className="text-xl sm:text-2xl font-extrabold text-[#0B2F85] tracking-tight">
             Trusted by Leading Education Providers
           </h2>
-        </div>
+        </motion.div>
 
         {/* Carousel Slider Row */}
         <div

@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'motion/react';
 import { ChevronRight, Home } from 'lucide-react';
+import { easings } from '../../utils/motion';
 
 interface BreadcrumbItem {
   label: string;
@@ -23,11 +25,14 @@ export const PageHero: React.FC<PageHeroProps> = ({
   bgImage
 }) => {
   return (
-    <section className="relative overflow-hidden bg-[#0A1F5C] text-white py-16  border-b border-slate-800">
+    <section className="relative overflow-hidden bg-[#0A1F5C] text-white py-16 border-b border-slate-800">
       {/* Background with measured contrast scrim */}
       {bgImage ? (
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-25 mix-blend-luminosity pointer-events-none"
+        <motion.div
+          initial={{ scale: 1.05, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.25 }}
+          transition={{ duration: 1.2, ease: easings.expoOut }}
+          className="absolute inset-0 bg-cover bg-center mix-blend-luminosity pointer-events-none"
           style={{ backgroundImage: `url(${bgImage})` }}
         />
       ) : null}
@@ -55,7 +60,13 @@ export const PageHero: React.FC<PageHeroProps> = ({
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb */}
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-slate-300 mb-4 sm:mb-6">
+        <motion.nav
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, ease: easings.expoOut }}
+          aria-label="Breadcrumb"
+          className="flex items-center gap-2 text-xs text-slate-300 mb-4 sm:mb-6"
+        >
           <Link to="/" className="flex items-center gap-1 hover:text-white transition-colors">
             <Home className="w-3.5 h-3.5" />
             <span>Home</span>
@@ -75,21 +86,36 @@ export const PageHero: React.FC<PageHeroProps> = ({
               )}
             </React.Fragment>
           ))}
-        </nav>
+        </motion.nav>
 
-        {/* Content */}
+        {/* Content with Staggered Entrance */}
         <div className="max-w-3xl">
           {badge && (
-            <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#33C9FF] mb-2">
+            <motion.span
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, ease: easings.expoOut, delay: 0.1 }}
+              className="inline-block text-xs font-semibold uppercase tracking-wider text-[#33C9FF] mb-2"
+            >
               {badge}
-            </span>
+            </motion.span>
           )}
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 [text-wrap:balance]">
+          <motion.h1
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: easings.expoOut, delay: 0.18 }}
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4 [text-wrap:balance]"
+          >
             {title}
-          </h1>
-          <p className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal">
+          </motion.h1>
+          <motion.p
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: easings.expoOut, delay: 0.26 }}
+            className="text-base sm:text-lg text-slate-200 leading-relaxed font-normal"
+          >
             {subtitle}
-          </p>
+          </motion.p>
         </div>
       </div>
     </section>

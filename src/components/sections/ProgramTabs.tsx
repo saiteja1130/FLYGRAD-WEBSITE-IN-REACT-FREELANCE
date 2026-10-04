@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Check } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Check, ArrowRight } from 'lucide-react';
 import campusImg from '../../assets/images/historic_redbrick_campus.jpg';
+import { easings } from '../../utils/motion';
 
 interface ProgramTabsProps {
   onOpenCounselling?: (programName?: string) => void;
@@ -67,79 +69,140 @@ export const ProgramTabs: React.FC<ProgramTabsProps> = ({ onOpenCounselling }) =
   const activeTab = programsData.find((p) => p.id === activeTabId) || programsData[0];
 
   return (
-    <section className="py-16  bg-white relative">
+    <section className="py-16 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header */}
-        <div className="mb-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-60px' }}
+          transition={{ duration: 0.6, ease: easings.expoOut }}
+          className="mb-8"
+        >
           <span className="text-[11px] font-bold uppercase tracking-wider text-[#0080FF] block mb-1">
             OUR PROGRAMS
           </span>
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0B2F85] tracking-tight">
             Work-Ready Certification
           </h2>
-        </div>
+        </motion.div>
 
-        {/* Tab Controls Bar */}
-        <div className="flex items-center gap-2 overflow-x-auto pb-4 sm:pb-0 mb-8 no-scrollbar">
+        {/* Tab Controls Bar with Glowing Sliding Active Pill */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 sm:pb-0 mb-8 no-scrollbar relative p-1.5 rounded-2xl bg-slate-100/80 border border-slate-200/60 w-fit">
           {programsData.map((tab) => {
             const isSelected = tab.id === activeTabId;
             return (
               <button
                 key={tab.id}
                 onClick={() => setActiveTabId(tab.id)}
-                className={`flex-1 sm:flex-initial text-center px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 whitespace-nowrap cursor-pointer ${isSelected
-                    ? 'bg-[#0052cc] text-white shadow-md'
-                    : 'bg-[#F1F5F9] text-slate-700 hover:bg-slate-200 hover:text-slate-900'
-                  }`}
+                className={`relative px-6 py-3 rounded-xl text-sm font-bold transition-colors whitespace-nowrap cursor-pointer z-10 ${
+                  isSelected ? 'text-white' : 'text-slate-700 hover:text-slate-900'
+                }`}
               >
+                {isSelected && (
+                  <motion.div
+                    layoutId="activeProgramTabPill"
+                    className="absolute inset-0 bg-gradient-to-r from-[#0052cc] to-[#0070E0] rounded-xl shadow-[0_4px_16px_rgba(0,82,204,0.35)] -z-10"
+                    transition={{
+                      type: 'spring',
+                      stiffness: 420,
+                      damping: 32,
+                    }}
+                  />
+                )}
                 {tab.name}
               </button>
             );
           })}
         </div>
 
-        {/* Tab Content Box */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        {/* Tab Content Box with Silky Blur-Scale Crossfade */}
+        <div className="bg-white rounded-3xl p-6 sm:p-8 lg:p-10 border border-slate-200/90 shadow-[0_10px_35px_rgba(0,30,90,0.06)] overflow-hidden min-h-[340px]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab.id}
+              initial={{ opacity: 0, scale: 0.98, filter: 'blur(4px)', y: 8 }}
+              animate={{ opacity: 1, scale: 1, filter: 'blur(0px)', y: 0 }}
+              exit={{ opacity: 0, scale: 0.98, filter: 'blur(4px)', y: -8 }}
+              transition={{ duration: 0.35, ease: easings.expoOut }}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center"
+            >
 
-            {/* Column 1: Campus Photo */}
-            <div className="lg:col-span-5">
-              <div className="rounded-2xl overflow-hidden shadow-md aspect-[16/10] bg-slate-100">
-                <img
-                  src={campusImg}
-                  alt={activeTab.title}
-                  className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
-                  loading="lazy"
-                />
+              {/* Column 1: Campus Photo */}
+              <div className="lg:col-span-5">
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.4 }}
+                  className="rounded-2xl overflow-hidden shadow-md aspect-[16/10] bg-slate-100 group relative"
+                >
+                  <img
+                    src={campusImg}
+                    alt={activeTab.title}
+                    className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </motion.div>
               </div>
-            </div>
 
-            {/* Column 2: Program Title & Description */}
-            <div className="lg:col-span-3 space-y-3">
-              <h3 className="text-xl sm:text-2xl font-extrabold text-[#0B2F85] tracking-tight">
-                {activeTab.title}
-              </h3>
-              <p className="text-sm text-slate-600 leading-relaxed font-normal">
-                {activeTab.description}
-              </p>
-            </div>
+              {/* Column 2: Program Title & Description */}
+              <div className="lg:col-span-3 space-y-4">
+                <h3 className="text-xl sm:text-2xl font-extrabold text-[#0B2F85] tracking-tight">
+                  {activeTab.title}
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-normal">
+                  {activeTab.description}
+                </p>
+                {onOpenCounselling && (
+                  <motion.button
+                    whileHover={{ scale: 1.03, x: 2 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={() => onOpenCounselling(activeTab.name)}
+                    className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0080FF] hover:text-[#0052cc] transition-colors cursor-pointer pt-1"
+                  >
+                    <span>Enquire About {activeTab.name}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </motion.button>
+                )}
+              </div>
 
-            {/* Column 3: Verified Checklist */}
-            <div className="lg:col-span-4 space-y-3 border-t lg:border-t-0 lg:border-l border-slate-100 pt-6 lg:pt-0 lg:pl-8">
-              {activeTab.checklist.map((item, idx) => (
-                <div key={idx} className="flex items-start gap-2.5">
-                  <div className="w-5 h-5 rounded-full bg-blue-50 text-[#0080FF] flex items-center justify-center shrink-0 mt-0.5">
-                    <Check className="w-3.5 h-3.5 stroke-[2.5]" />
-                  </div>
-                  <span className="text-xs sm:text-sm text-slate-700 leading-snug font-medium">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
+              {/* Column 3: Verified Checklist with Cascading Spring Reveals */}
+              <div className="lg:col-span-4 space-y-3.5 border-t lg:border-t-0 lg:border-l border-slate-100 pt-6 lg:pt-0 lg:pl-8">
+                {activeTab.checklist.map((item, idx) => (
+                  <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: 12 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      duration: 0.35,
+                      ease: easings.expoOut,
+                      delay: idx * 0.05,
+                    }}
+                    className="flex items-start gap-2.5"
+                  >
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{
+                        type: 'spring',
+                        stiffness: 450,
+                        damping: 22,
+                        delay: 0.08 + idx * 0.05,
+                      }}
+                      className="w-5 h-5 rounded-full bg-blue-50 text-[#0080FF] flex items-center justify-center shrink-0 mt-0.5 shadow-2xs"
+                    >
+                      <Check className="w-3.5 h-3.5 stroke-[2.5]" />
+                    </motion.div>
+                    <span className="text-xs sm:text-sm text-slate-700 leading-snug font-medium">
+                      {item}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
 
-          </div>
+            </motion.div>
+          </AnimatePresence>
         </div>
 
       </div>

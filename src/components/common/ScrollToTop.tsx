@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'motion/react';
 import { ArrowUp } from 'lucide-react';
+import { springs } from '../../utils/motion';
 
 export const ScrollToTopOnRoute: React.FC = () => {
   const { pathname } = useLocation();
@@ -21,7 +23,7 @@ export const ScrollToTopButton: React.FC = () => {
 
   useEffect(() => {
     const toggleVisible = () => {
-      setVisible(window.scrollY > 200);
+      setVisible(window.scrollY > 300);
     };
 
     window.addEventListener('scroll', toggleVisible, { passive: true });
@@ -36,14 +38,23 @@ export const ScrollToTopButton: React.FC = () => {
   };
 
   return (
-    <button
-      onClick={scrollToTop}
-      aria-label="Scroll to top"
-      className={`fixed bottom-22 right-7 z-40 w-9 h-9 rounded-full bg-[#0080FF] hover:bg-[#006EDC] text-white shadow-lg transition-all duration-300 flex items-center justify-center cursor-pointer hover:scale-105 active:scale-95 ${
-        visible ? 'opacity-100 translate-y-0 pointer-events-auto' : 'opacity-0 translate-y-4 pointer-events-none'
-      }`}
-    >
-      <ArrowUp className="w-4 h-4 stroke-[2.5]" />
-    </button>
+    <AnimatePresence>
+      {visible && (
+        <motion.button
+          key="scroll-to-top"
+          initial={{ opacity: 0, scale: 0.6, y: 10 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.6, y: 10 }}
+          transition={springs.bouncy}
+          whileHover={{ scale: 1.1, y: -2 }}
+          whileTap={{ scale: 0.92 }}
+          onClick={scrollToTop}
+          aria-label="Scroll to top"
+          className="fixed bottom-22 right-7 z-40 w-10 h-10 rounded-full bg-[#0080FF] hover:bg-[#006EDC] text-white shadow-xl flex items-center justify-center cursor-pointer"
+        >
+          <ArrowUp className="w-4 h-4 stroke-[2.5]" />
+        </motion.button>
+      )}
+    </AnimatePresence>
   );
 };

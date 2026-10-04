@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@700&display=swap');
+@import "tailwindcss";
 
 .font-script {
   font-family: 'Caveat', cursive, sans-serif;
@@ -95,6 +95,35 @@
 .animate-flight-path {
   stroke-dasharray: 8 8;
   animation: flightDash 25s linear infinite;
+}
+
+/* Shimmer Light Sweep Effect for buttons and cards */
+@keyframes shimmerSweep {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  40%, 100% { transform: translateX(250%) skewX(-20deg); }
+}
+.animate-shimmer-sweep {
+  animation: shimmerSweep 4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+}
+
+/* Radiant Animated Text Gradient */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient-text {
+  background-size: 200% auto;
+  animation: gradientShift 5s ease infinite;
+}
+
+/* Pulsing Ambient Glow Orbs */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.65; transform: scale(1.1); }
+}
+.animate-pulse-glow {
+  animation: pulseGlow 6s ease-in-out infinite;
 }
 
 /* Infinite Marquee */
