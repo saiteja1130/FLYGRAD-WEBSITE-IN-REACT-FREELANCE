@@ -14,6 +14,7 @@ import {
   Send,
   Plane,
   FileCheck,
+  Users,
 } from 'lucide-react';
 
 import heroStudentImg from '../assets/images/services/services_hero_student.jpg';
@@ -33,131 +34,158 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenCounselling })
   return (
     <div className="bg-white min-h-screen">
       {/* ========================================================================= */}
-      {/* 1. HERO SECTION */}
+      {/* 1. HERO SECTION - Exact Match Screenshot */}
       {/* ========================================================================= */}
-      <section className="relative bg-gradient-to-b from-[#EBF5FF] via-[#F4F9FF] to-white pt-6 pb-16 lg:pb-20 overflow-hidden border-b border-sky-100/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs sm:text-sm text-slate-500 mb-8 sm:mb-12">
-            <Link to="/" className="hover:text-[#0080FF] transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
-            <span className="font-semibold text-slate-700">Services</span>
-          </nav>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
+      <section className="relative bg-gradient-to-r from-[#D2EBFF] via-[#E2F1FF] to-[#D5ECFF] overflow-hidden border-b border-sky-100/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center min-h-[440px] lg:min-h-[480px] py-10 lg:py-0">
             {/* Left Headline & Description */}
-            <div className="lg:col-span-6 space-y-4 sm:space-y-6">
+            <div className="lg:col-span-6 xl:col-span-6 space-y-4 py-4 lg:py-16">
+              {/* Breadcrumb */}
+              <nav className="flex items-center gap-2 text-xs sm:text-sm text-[#0080FF] mb-4">
+                <Link to="/" className="text-[#0080FF] hover:underline font-medium">
+                  Home
+                </Link>
+                <ChevronRight className="w-3.5 h-3.5 text-slate-400" />
+                <span className="font-semibold text-[#0B2F85]">Services</span>
+              </nav>
+
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#0080FF]">
+                <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#0080FF] block mb-1">
                   OUR SERVICES
                 </span>
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-[#0B2347] tracking-tight leading-[1.1] mt-2">
+                <h1 className="text-3xl sm:text-4xl lg:text-[3.25rem] font-black text-[#0B2F85] tracking-tight leading-[1.1]">
                   Comprehensive Guidance <br />
                   for Your <span className="text-[#0080FF]">Global Dreams</span>
                 </h1>
               </div>
 
-              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl">
+              <p className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl font-normal">
                 From university admissions to visa assistance, we provide end-to-end support for your study abroad journey. Explore our specialized services and take the first step towards a brighter future.
               </p>
             </div>
 
-            {/* Right Hero Graphic: Indian Student at Airport with Jet Takeoff */}
-            <div className="lg:col-span-6 relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-2xl border border-sky-100 aspect-[16/10] sm:aspect-[16/9] lg:aspect-[16/10] bg-slate-100 group">
-                <img
-                  src={heroStudentImg}
-                  alt="Student at airport with airplane taking off"
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-
-                {/* Stylized Badge: "Your Global Future Awaits" */}
-                <div className="absolute top-5 right-5 sm:top-6 sm:right-6 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-lg border border-sky-100 flex items-center gap-2 transform rotate-2 hover:rotate-0 transition-transform">
-                  <span className="font-serif italic font-extrabold text-sm sm:text-base text-[#0080FF] tracking-tight">
-                    Your Global Future Awaits
-                  </span>
-                  <Plane className="w-4 h-4 text-[#0080FF] transform -rotate-45" />
+            {/* Right visual for mobile/tablet */}
+            <div className="lg:hidden rounded-2xl overflow-hidden shadow-md aspect-[16/9] relative">
+              <img
+                src={heroStudentImg}
+                alt="Student at airport with airplane taking off"
+                className="w-full h-full object-cover object-center"
+              />
+              <div className="absolute top-4 right-4 text-right transform -rotate-6">
+                <div className="font-script text-xl font-bold text-[#0B2F85] leading-none drop-shadow-xs">
+                  Your Global
                 </div>
+                <div className="font-script text-xl font-bold text-[#0080FF] leading-none drop-shadow-xs">
+                  Future Awaits
+                </div>
+                <svg className="w-20 h-2 text-[#0080FF] ml-auto mt-0.5" viewBox="0 0 140 12" fill="none">
+                  <path d="M 2 8 C 40 2, 100 2, 138 9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+                </svg>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Desktop Full-Bleed Right Visual matching Screenshot */}
+        <div className="hidden lg:block absolute right-0 top-0 bottom-0 w-[58%] xl:w-[60%] overflow-hidden pointer-events-none">
+          <img
+            src={heroStudentImg}
+            alt="Student at airport with airplane taking off"
+            className="w-full h-full object-cover object-center"
+            style={{
+              maskImage: 'linear-gradient(to right, transparent 0%, transparent 8%, rgba(0, 0, 0, 0.25) 28%, rgba(0, 0, 0, 0.8) 55%, black 75%)',
+              WebkitMaskImage: 'linear-gradient(to right, transparent 0%, transparent 8%, rgba(0, 0, 0, 0.25) 28%, rgba(0, 0, 0, 0.8) 55%, black 75%)'
+            }}
+          />
+
+          {/* Calligraphic Script: "Your Global Future Awaits" with curved swoosh */}
+          <div className="absolute top-16 right-10 sm:right-14 lg:right-16 text-right transform -rotate-6 select-none pointer-events-none">
+            <div className="font-script text-3xl xl:text-4xl font-bold text-[#0B2F85] leading-none drop-shadow-xs">
+              Your Global
+            </div>
+            <div className="font-script text-3xl xl:text-4xl font-bold text-[#0080FF] leading-none drop-shadow-xs">
+              Future Awaits
+            </div>
+            <svg className="w-32 xl:w-40 h-3 text-[#0080FF] ml-auto mt-1" viewBox="0 0 140 12" fill="none">
+              <path d="M 2 8 C 40 2, 100 2, 138 9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
+            </svg>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. END-TO-END SUPPORT FOR EVERY STEP */}
+      {/* 2. END-TO-END SUPPORT FOR EVERY STEP - Exact Match Screenshot */}
       {/* ========================================================================= */}
       <section className="py-14 sm:py-18 bg-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
             {/* Left Header */}
             <div className="lg:col-span-4 space-y-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0080FF]">
+              <span className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-[#0080FF] block">
                 OUR SERVICES
               </span>
-              <h2 className="text-2xl sm:text-3xl font-black text-[#0B2347] tracking-tight leading-tight">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2F85] tracking-tight leading-tight">
                 End-to-End Support for Every Step
               </h2>
-              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed pt-1">
+              <p className="text-slate-600 text-xs sm:text-sm leading-relaxed pt-1 font-normal">
                 We offer a wide range of services to help you achieve your international education goals. Our expert counsellors provide personalized guidance and support at every stage of your journey.
               </p>
             </div>
 
-            {/* Right 4 Feature Cards */}
+            {/* Right 4 Feature Cards in a single row */}
             <div className="lg:col-span-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {/* Feature 1 */}
-                <div className="bg-white rounded-2xl p-5 border border-sky-100/90 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 text-left flex flex-col gap-2.5">
-                  <div className="w-10 h-10 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0 shadow-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
+                {/* Feature 1: Expert Guidance */}
+                <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs hover:shadow-md transition-all duration-300 text-left flex flex-col items-start">
+                  <div className="w-11 h-11 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0 mb-3 shadow-xs">
                     <GraduationCap className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-[#0B2347]">Expert Guidance</h3>
-                    <p className="text-xs text-slate-500 leading-snug mt-1">
-                      Personalized counselling from experienced education consultants.
-                    </p>
-                  </div>
+                  <h3 className="text-sm font-bold text-[#0B2F85] leading-snug">
+                    Expert Guidance
+                  </h3>
+                  <p className="text-xs text-slate-500 font-normal leading-relaxed mt-1">
+                    Personalized counselling from experienced education consultants.
+                  </p>
                 </div>
 
-                {/* Feature 2 */}
-                <div className="bg-white rounded-2xl p-5 border border-sky-100/90 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 text-left flex flex-col gap-2.5">
-                  <div className="w-10 h-10 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0 shadow-xs">
+                {/* Feature 2: Trusted Process */}
+                <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs hover:shadow-md transition-all duration-300 text-left flex flex-col items-start">
+                  <div className="w-11 h-11 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0 mb-3 shadow-xs">
                     <ShieldCheck className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-[#0B2347]">Trusted Process</h3>
-                    <p className="text-xs text-slate-500 leading-snug mt-1">
-                      Transparent and secure admission and visa process.
-                    </p>
-                  </div>
+                  <h3 className="text-sm font-bold text-[#0B2F85] leading-snug">
+                    Trusted Process
+                  </h3>
+                  <p className="text-xs text-slate-500 font-normal leading-relaxed mt-1">
+                    Transparent and secure admission and visa process.
+                  </p>
                 </div>
 
-                {/* Feature 3 */}
-                <div className="bg-white rounded-2xl p-5 border border-sky-100/90 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 text-left flex flex-col gap-2.5">
-                  <div className="w-10 h-10 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0 shadow-xs">
+                {/* Feature 3: Global Network */}
+                <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs hover:shadow-md transition-all duration-300 text-left flex flex-col items-start">
+                  <div className="w-11 h-11 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0 mb-3 shadow-xs">
                     <Globe className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-[#0B2347]">Global Network</h3>
-                    <p className="text-xs text-slate-500 leading-snug mt-1">
-                      Partnerships with top universities worldwide.
-                    </p>
-                  </div>
+                  <h3 className="text-sm font-bold text-[#0B2F85] leading-snug">
+                    Global Network
+                  </h3>
+                  <p className="text-xs text-slate-500 font-normal leading-relaxed mt-1">
+                    Partnerships with top universities worldwide.
+                  </p>
                 </div>
 
-                {/* Feature 4 */}
-                <div className="bg-white rounded-2xl p-5 border border-sky-100/90 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 text-left flex flex-col gap-2.5">
-                  <div className="w-10 h-10 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0 shadow-xs">
-                    <Headphones className="w-5 h-5" />
+                {/* Feature 4: Ongoing Support */}
+                <div className="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs hover:shadow-md transition-all duration-300 text-left flex flex-col items-start">
+                  <div className="w-11 h-11 rounded-full bg-[#0080FF] text-white flex items-center justify-center shrink-0 mb-3 shadow-xs">
+                    <Users className="w-5 h-5" />
                   </div>
-                  <div>
-                    <h3 className="text-sm font-bold text-[#0B2347]">Ongoing Support</h3>
-                    <p className="text-xs text-slate-500 leading-snug mt-1">
-                      From application to pre-departure, we're with you.
-                    </p>
-                  </div>
+                  <h3 className="text-sm font-bold text-[#0B2F85] leading-snug">
+                    Ongoing Support
+                  </h3>
+                  <p className="text-xs text-slate-500 font-normal leading-relaxed mt-1">
+                    From application to pre-departure, we're with you.
+                  </p>
                 </div>
               </div>
             </div>
@@ -350,45 +378,68 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenCounselling })
       </section>
 
       {/* ========================================================================= */}
-      {/* 4. MIDDLE CTA BANNER */}
+      {/* 4. MIDDLE CTA BANNER - Exact Match Screenshot */}
       {/* ========================================================================= */}
       <section className="py-6 sm:py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#006AE0] via-[#0080FF] to-[#0094FF] text-white shadow-xl">
-            <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6 p-6 sm:p-10 lg:p-12">
-              {/* Left Student Image in rounded circle/card */}
-              <div className="flex items-center gap-5 sm:gap-8 flex-1">
-                <div className="w-20 h-20 sm:w-28 sm:h-28 rounded-2xl overflow-hidden shrink-0 border-2 border-white/40 shadow-lg">
+          <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#0086FF] via-[#0070F0] to-[#0058D4] text-white shadow-xl min-h-[170px] sm:min-h-[190px] flex items-center">
+            {/* Left Student Image - desktop cutout blending smoothly */}
+            <div className="hidden sm:block absolute left-0 bottom-0 top-0 w-48 md:w-56 lg:w-64 xl:w-72 overflow-hidden pointer-events-none z-0">
+              <img
+                src={ctaStudentImg}
+                alt="Student ready for global education"
+                className="w-full h-full object-cover object-top"
+                style={{
+                  maskImage: 'linear-gradient(to right, black 65%, rgba(0, 0, 0, 0.7) 82%, transparent 100%)',
+                  WebkitMaskImage: 'linear-gradient(to right, black 65%, rgba(0, 0, 0, 0.7) 82%, transparent 100%)'
+                }}
+              />
+            </div>
+
+            {/* Content Container */}
+            <div className="relative z-10 w-full flex flex-col md:flex-row items-start md:items-center justify-between gap-6 py-8 px-6 sm:px-10 lg:px-12 sm:pl-52 md:pl-60 lg:pl-68">
+              {/* Mobile Student Avatar */}
+              <div className="sm:hidden flex items-center gap-3">
+                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-white/60 shrink-0 shadow-md">
                   <img
                     src={ctaStudentImg}
-                    alt="Confident student ready for study abroad"
-                    className="w-full h-full object-cover"
+                    alt="Student ready for global education"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
-
-                <div className="space-y-1.5">
-                  <span className="text-[11px] sm:text-xs font-extrabold uppercase tracking-widest text-sky-200">
+                <div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-sky-100 block">
                     YOUR SUCCESS IS OUR PRIORITY
                   </span>
-                  <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight leading-tight">
-                    Ready to Start Your <br className="hidden sm:block" />
-                    Global Education Journey?
-                  </h2>
-                  <p className="text-white/90 text-xs sm:text-sm leading-relaxed max-w-md">
-                    Get expert guidance and personalized support from our team.
-                  </p>
+                  <div className="text-base font-bold text-white">
+                    Start Your Global Journey
+                  </div>
                 </div>
               </div>
 
+              {/* Text Block */}
+              <div className="space-y-1 sm:space-y-1.5 max-w-xl">
+                <span className="hidden sm:block text-[11px] sm:text-xs font-bold uppercase tracking-wider text-white/80">
+                  YOUR SUCCESS IS OUR PRIORITY
+                </span>
+                <h2 className="text-2xl sm:text-3xl lg:text-[2rem] font-bold text-white tracking-tight leading-tight">
+                  Ready to Start Your <br className="hidden sm:inline" />
+                  Global Education Journey?
+                </h2>
+                <p className="text-white/90 text-xs sm:text-sm font-normal leading-relaxed pt-0.5">
+                  Get expert guidance and personalized support from our team.
+                </p>
+              </div>
+
               {/* Right CTA Button */}
-              <div className="shrink-0 w-full sm:w-auto text-center">
+              <div className="shrink-0 w-full sm:w-auto text-left md:text-right">
                 <button
                   type="button"
                   onClick={() => onOpenCounselling()}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white text-[#0080FF] hover:bg-slate-50 font-bold text-sm shadow-lg transition-all hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 sm:px-8 py-3.5 rounded-full bg-white text-[#006CE5] hover:text-[#0052B8] hover:bg-slate-50 font-bold text-sm shadow-lg transition-all duration-200 hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap"
                 >
                   <span>Book Free Counselling</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4 text-[#006CE5]" />
                 </button>
               </div>
             </div>
@@ -397,73 +448,69 @@ export const ServicesPage: React.FC<ServicesPageProps> = ({ onOpenCounselling })
       </section>
 
       {/* ========================================================================= */}
-      {/* 5. NUMBERS THAT SPEAK (OUR IMPACT) */}
+      {/* 5. NUMBERS THAT SPEAK (OUR IMPACT) - Exact Match Screenshot */}
       {/* ========================================================================= */}
-      <section className="py-14 sm:py-18 bg-[#F4F9FD] border-y border-sky-100/70">
+      <section className="py-6 sm:py-8 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Left Header */}
-            <div className="lg:col-span-4 space-y-1 text-center lg:text-left">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#0080FF]">
-                Our Impact
-              </span>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B2347] tracking-tight leading-tight">
-                Numbers That Speak
-              </h2>
-            </div>
+          <div className="bg-[#F0F7FE] rounded-2xl sm:rounded-3xl p-6 sm:p-8 lg:p-10 border border-sky-100/60 shadow-2xs">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+              {/* Left Header */}
+              <div className="lg:col-span-4 text-center lg:text-left space-y-1">
+                <span className="text-xs sm:text-sm font-bold text-[#0080FF] block">
+                  Our Impact
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0B2F85] tracking-tight leading-tight">
+                  Numbers That Speak
+                </h2>
+              </div>
 
-            {/* Right 4 Stat Cards */}
-            <div className="lg:col-span-8">
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5">
-                {/* Stat 1 */}
-                <div className="bg-white rounded-2xl p-5 sm:p-6 border border-sky-100 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 text-center flex flex-col items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-[#EBF5FF] text-[#0080FF] flex items-center justify-center mb-3">
-                    <GraduationCap className="w-6 h-6" />
+              {/* Right 4 Metrics with vertical dividers */}
+              <div className="lg:col-span-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-slate-200/80">
+                  {/* Metric 1 */}
+                  <div className="px-3 sm:px-5 py-4 md:py-0 text-center flex flex-col items-center justify-center">
+                    <GraduationCap className="w-8 h-8 sm:w-9 sm:h-9 text-[#0080FF] stroke-[2]" />
+                    <div className="text-2xl sm:text-3xl font-black text-[#0B2F85] tracking-tight mt-2.5">
+                      10K+
+                    </div>
+                    <div className="text-xs sm:text-sm text-slate-500 font-normal mt-0.5 whitespace-nowrap">
+                      Students Counselled
+                    </div>
                   </div>
-                  <div className="text-2xl sm:text-3xl font-black text-[#0B2347] tracking-tight">
-                    10K+
-                  </div>
-                  <div className="text-xs sm:text-sm font-medium text-slate-600 mt-1">
-                    Students Counselled
-                  </div>
-                </div>
 
-                {/* Stat 2 */}
-                <div className="bg-white rounded-2xl p-5 sm:p-6 border border-sky-100 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 text-center flex flex-col items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-[#EBF5FF] text-[#0080FF] flex items-center justify-center mb-3">
-                    <Landmark className="w-6 h-6" />
+                  {/* Metric 2 */}
+                  <div className="px-3 sm:px-5 py-4 md:py-0 text-center flex flex-col items-center justify-center">
+                    <Landmark className="w-8 h-8 sm:w-9 sm:h-9 text-[#0080FF] stroke-[2]" />
+                    <div className="text-2xl sm:text-3xl font-black text-[#0B2F85] tracking-tight mt-2.5">
+                      20+
+                    </div>
+                    <div className="text-xs sm:text-sm text-slate-500 font-normal mt-0.5 whitespace-nowrap">
+                      Universities
+                    </div>
                   </div>
-                  <div className="text-2xl sm:text-3xl font-black text-[#0B2347] tracking-tight">
-                    20+
-                  </div>
-                  <div className="text-xs sm:text-sm font-medium text-slate-600 mt-1">
-                    Universities
-                  </div>
-                </div>
 
-                {/* Stat 3 */}
-                <div className="bg-white rounded-2xl p-5 sm:p-6 border border-sky-100 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 text-center flex flex-col items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-[#EBF5FF] text-[#0080FF] flex items-center justify-center mb-3">
-                    <Globe className="w-6 h-6" />
+                  {/* Metric 3 */}
+                  <div className="px-3 sm:px-5 py-4 md:py-0 text-center flex flex-col items-center justify-center">
+                    <Globe className="w-8 h-8 sm:w-9 sm:h-9 text-[#0080FF] stroke-[2]" />
+                    <div className="text-2xl sm:text-3xl font-black text-[#0B2F85] tracking-tight mt-2.5">
+                      20+
+                    </div>
+                    <div className="text-xs sm:text-sm text-slate-500 font-normal mt-0.5 whitespace-nowrap">
+                      Countries
+                    </div>
                   </div>
-                  <div className="text-2xl sm:text-3xl font-black text-[#0B2347] tracking-tight">
-                    20+
-                  </div>
-                  <div className="text-xs sm:text-sm font-medium text-slate-600 mt-1">
-                    Countries
-                  </div>
-                </div>
 
-                {/* Stat 4 */}
-                <div className="bg-white rounded-2xl p-5 sm:p-6 border border-sky-100 shadow-xs hover:shadow-md hover:-translate-y-1 transition-all duration-300 text-center flex flex-col items-center justify-center">
-                  <div className="w-12 h-12 rounded-full bg-[#EBF5FF] text-[#0080FF] flex items-center justify-center mb-3">
-                    <ShieldCheck className="w-6 h-6" />
-                  </div>
-                  <div className="text-2xl sm:text-3xl font-black text-[#0B2347] tracking-tight">
-                    95%
-                  </div>
-                  <div className="text-xs sm:text-sm font-medium text-slate-600 mt-1">
-                    Visa Success Rate
+                  {/* Metric 4 - Solid blue shield with white checkmark */}
+                  <div className="px-3 sm:px-5 py-4 md:py-0 text-center flex flex-col items-center justify-center">
+                    <svg className="w-8 h-8 sm:w-9 sm:h-9 text-[#0080FF]" viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 15.5l-4-4 1.41-1.41L10 13.67l6.59-6.59L18 8.5l-8 8z" />
+                    </svg>
+                    <div className="text-2xl sm:text-3xl font-black text-[#0B2F85] tracking-tight mt-2.5">
+                      95%
+                    </div>
+                    <div className="text-xs sm:text-sm text-slate-500 font-normal mt-0.5 whitespace-nowrap">
+                      Visa Success Rate
+                    </div>
                   </div>
                 </div>
               </div>

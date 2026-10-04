@@ -4,12 +4,12 @@ import { ArrowRight, Compass, ShieldCheck, Globe, Users, Building2 } from 'lucid
 
 export const SectionTwoFeatures: React.FC = () => {
   return (
-    <section className="py-16 sm:py-20 lg:py-24 bg-white relative">
+    <section className="py-16 bg-white relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           
           {/* Left Column: Heading, description & button */}
-          <div className="lg:col-span-4 space-y-4 pr-0 lg:pr-4">
+          <div className="lg:col-span-6 space-y-6 pr-0 lg:pr-4">
             <span className="text-[11px] font-bold uppercase tracking-wider text-[#0080FF] block">
               YOUR GLOBAL EDUCATION PARTNER
             </span>
@@ -74,32 +74,7 @@ export const SectionTwoFeatures: React.FC = () => {
 
           </div>
 
-          {/* Right Column: 2 Stat Badges */}
-          <div className="lg:col-span-2 flex flex-col sm:flex-row lg:flex-col gap-4">
-            
-            {/* Stat 1 */}
-            <div className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-xs flex items-center gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0080FF] flex items-center justify-center shrink-0">
-                <Users className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xl font-black text-[#0B2F85] leading-tight">10K+</div>
-                <div className="text-[11px] text-slate-500 font-medium">Students Counselled</div>
-              </div>
-            </div>
-
-            {/* Stat 2 */}
-            <div className="bg-white rounded-2xl p-4 border border-slate-200/90 shadow-xs flex items-center gap-3.5">
-              <div className="w-10 h-10 rounded-xl bg-blue-50 text-[#0080FF] flex items-center justify-center shrink-0">
-                <Building2 className="w-5 h-5" />
-              </div>
-              <div>
-                <div className="text-xl font-black text-[#0B2F85] leading-tight">20+</div>
-                <div className="text-[11px] text-slate-500 font-medium">Universities</div>
-              </div>
-            </div>
-
-          </div>
+         
 
         </div>
       </div>

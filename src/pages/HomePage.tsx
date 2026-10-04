@@ -28,7 +28,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onOpenCounselling }) => {
       {/* 4. Two-Column Row: Add-Ons Along the Way (with cutout) + Real Stories Testimonial Card */}
       <AddOnsAndTestimonials />
 
-      {/* 5. Two-Column Row: Recognised & Certified + Top Universities & Test Bodies */}
+      {/* 5. Recognised & Certified Credentials */}
       <CredentialsAndPartners />
 
       {/* 6. Blue Impact Metric Counter Strip */}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Logo } from '../common/Logo.tsx';
 import { useScrollPosition } from '../../hooks/useScrollPosition.ts';
@@ -33,6 +33,34 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCounselling }) => {
     setMobileMenuOpen(false);
   };
 
+  // Close mobile menu on route change
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
+  // Close mobile menu on desktop resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMobileMenuOpen(false);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <>
       <header
@@ -43,9 +71,9 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCounselling }) => {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between gap-3">
             {/* Zone 1: Logo Brand Wordmark */}
-            <Link to="/" className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1E90F0] rounded-lg">
+            <Link to="/" className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1E90F0] rounded-lg shrink-0">
               <Logo size="md" />
             </Link>
 
@@ -232,10 +260,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCounselling }) => {
             </nav>
 
             {/* Zone 3: Primary Action & Mobile Hamburger */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <button
                 onClick={onOpenCounselling}
-                className="bg-[#0080FF] hover:bg-[#006EDC] text-white text-xs sm:text-sm font-semibold py-2.5 px-5 sm:px-6 rounded-full whitespace-nowrap shadow-sm hover:shadow-md transition-all flex items-center gap-2 cursor-pointer active:scale-95"
+                className="hidden sm:inline-flex bg-[#0080FF] hover:bg-[#006EDC] text-white text-xs sm:text-sm font-semibold py-2.5 px-4 sm:px-6 rounded-full whitespace-nowrap shadow-sm hover:shadow-md transition-all items-center gap-2 cursor-pointer active:scale-95"
               >
                 <span>Book Free Counselling</span>
                 <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
@@ -248,7 +276,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCounselling }) => {
                 type="button"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 aria-label="Toggle navigation menu"
-                className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#1E90F0]"
+                className="lg:hidden p-2 rounded-xl text-slate-700 hover:bg-slate-100 transition-colors focus:outline-none focus:ring-2 focus:ring-[#1E90F0] cursor-pointer"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
@@ -259,8 +287,15 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCounselling }) => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="fixed top-0 right-0 bottom-0 w-full max-w-sm bg-white p-6 shadow-2xl overflow-y-auto animate-in slide-in-from-right duration-250 flex flex-col justify-between">
+        <div className="lg:hidden fixed inset-0 z-50 bg-slate-900/50 backdrop-blur-sm animate-in fade-in duration-200">
+          {/* Backdrop click to close */}
+          <div
+            className="absolute inset-0 cursor-pointer"
+            onClick={closeMobile}
+            aria-hidden="true"
+          />
+
+          <div className="relative z-10 ml-auto w-full max-w-xs sm:max-w-sm h-full bg-white p-6 shadow-2xl overflow-y-auto animate-in slide-in-from-right duration-250 flex flex-col justify-between">
             <div>
               {/* Mobile Drawer Header */}
               <div className="flex items-center justify-between pb-6 border-b border-slate-100">
@@ -268,7 +303,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenCounselling }) => {
                 <button
                   onClick={closeMobile}
                   aria-label="Close menu"
-                  className="p-2 rounded-xl text-slate-500 hover:bg-slate-100"
+                  className="p-2 rounded-xl text-slate-500 hover:bg-slate-100 cursor-pointer"
                 >
                   <X className="w-5 h-5" />
                 </button>

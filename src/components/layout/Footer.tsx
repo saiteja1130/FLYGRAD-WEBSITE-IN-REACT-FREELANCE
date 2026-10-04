@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/10">
           
           {/* Column 1: Brand & Socials */}
-          <div className="lg:col-span-4 space-y-4">
+          <div className="lg:col-span-5 space-y-4">
             <Link to="/" className="inline-block">
               <Logo variant="dark" size="md" />
             </Link>
@@ -63,7 +63,7 @@ export const Footer: React.FC = () => {
           </div>
 
           {/* Column 2: Quick Links */}
-          <div className="lg:col-span-2 space-y-3">
+          <div className="lg:col-span-3 space-y-3">
             <h4 className="text-white text-xs sm:text-sm font-bold tracking-wider mb-4">
               Quick Links
             </h4>
@@ -89,7 +89,8 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Column 3: Legal */}
+          {/* Column 3: Legal - Commented Out */}
+          {/*
           <div className="lg:col-span-2 space-y-3">
             <h4 className="text-white text-xs sm:text-sm font-bold tracking-wider mb-4">
               Legal
@@ -109,6 +110,7 @@ export const Footer: React.FC = () => {
               </li>
             </ul>
           </div>
+          */}
 
           {/* Column 4: Contact Us */}
           <div className="lg:col-span-4 space-y-3.5">
@@ -147,12 +149,14 @@ export const Footer: React.FC = () => {
 
         {/* Bottom Bar */}
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <p>© 2025 Flygrad. All rights reserved.</p>
+        <p>© {new Date().getFullYear()} Flygrad. All rights reserved.</p>
+          {/*
           <div className="flex items-center gap-4">
             <Link to="/privacy" className="hover:text-slate-400 transition-colors">Privacy Policy</Link>
             <span>|</span>
             <Link to="/terms" className="hover:text-slate-400 transition-colors">Terms &amp; Conditions</Link>
           </div>
+          */}
         </div>
 
       </div>

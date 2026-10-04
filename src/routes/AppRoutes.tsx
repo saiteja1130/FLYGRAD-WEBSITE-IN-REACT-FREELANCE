@@ -35,8 +35,8 @@ export const AppRoutes: React.FC<AppRoutesProps> = ({ onOpenCounselling }) => {
       <Route path="/testimonials" element={<TestimonialsPage onOpenCounselling={() => onOpenCounselling()} />} />
       <Route path="/faq" element={<FaqPage onOpenCounselling={() => onOpenCounselling()} />} />
       <Route path="/contact" element={<ContactPage />} />
-      <Route path="/privacy" element={<PrivacyPage />} />
-      <Route path="/terms" element={<TermsPage />} />
+      {/* <Route path="/privacy" element={<PrivacyPage />} /> */}
+      {/* <Route path="/terms" element={<TermsPage />} /> */}
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

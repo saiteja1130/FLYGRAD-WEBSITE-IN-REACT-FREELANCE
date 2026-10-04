@@ -17,14 +17,14 @@ export const Logo: React.FC<LogoProps> = ({
 
   const iconSizes = {
     sm: 'w-7 h-7',
-    md: 'w-9 h-9',
-    lg: 'w-11 h-11'
+    md: 'w-8 h-8 sm:w-9 sm:h-9',
+    lg: 'w-10 h-10 sm:w-11 sm:h-11'
   };
 
   const textSizes = {
     sm: 'text-lg',
-    md: 'text-2xl',
-    lg: 'text-3xl'
+    md: 'text-xl sm:text-2xl',
+    lg: 'text-2xl sm:text-3xl'
   };
 
   return (
@@ -72,7 +72,7 @@ export const Logo: React.FC<LogoProps> = ({
           </span>
         </div>
         {showTagline && (
-          <span className={`text-[9px] sm:text-[10px] tracking-normal font-medium mt-0.5 ${isDark ? 'text-slate-300' : 'text-slate-500'}`}>
+          <span className={`text-[8.5px] sm:text-[10px] tracking-normal font-medium mt-0.5 whitespace-nowrap ${isDark ? 'text-slate-300' : 'text-slate-500'}`}>
             Your Global Education Partner
           </span>
         )}
